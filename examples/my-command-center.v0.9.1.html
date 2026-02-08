@@ -11,7 +11,7 @@
 <meta name="subject" content="JavaScript UI library for building real-time TV dashboard, monitoring UI and IoT web interface">
 
 <title>My Command Center</title>
-<script src="https://unpkg.com/zeu@0.9.1/lib/zeu.js"></script>
+<script src="../dist/zeu.js"></script>
 <style>
 html,
 body {
@@ -629,14 +629,11 @@ setInterval(function() {
   heartbeat2.beat();
 }, 1500);
 
-var digitalClock = new zeu.DigitalClcok(
-  document.getElementById('digital-clock'), 
+var digitalClock = new zeu.DigitalClock(
+  'digital-clock', 
   {
     dashColor: black,
-    numberColor: blue_d1,
-    barWidth: 8,
-    barHeight : 30,
-    space: 8
+    numberColor: blue_d1
   }
 );
 digitalClock.tick();

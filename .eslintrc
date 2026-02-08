@@ -1,32 +1,19 @@
 {
-
   "env": {
     "browser": true,
     "es6": true,
     "node": true
   },
-
-  "globals": {
-    "document": false,
-    "escape": false,
-    "navigator": false,
-    "unescape": false,
-    "window": false,
-    "describe": true,
-    "before": true,
-    "it": true,
-    "expect": true,
-    "sinon": true
-  },
-
-  "parser": "babel-eslint",
-
-  "plugins": [
-    
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
-
   "rules": {
+    "@typescript-eslint/no-explicit-any": "error",
     "block-scoped-var": 2,
+    "no-undef": "off",
     "brace-style": [2, "1tbs", { "allowSingleLine": true }],
     "camelcase": [2, { "properties": "always" }],
     "comma-dangle": [2, "never"],
@@ -137,7 +124,6 @@
     "no-ternary": 0,
     "no-throw-literal": 2,
     "no-trailing-spaces": 2,
-    "no-undef": 2,
     "no-undef-init": 2,
     "no-undefined": 0,
     "no-underscore-dangle": 0,
@@ -145,7 +131,8 @@
     "no-unreachable": 2,
     "no-unused-expressions": 0,
     "no-unused-vars": [2, { "vars": "all", "args": "none" }],
-    "no-use-before-define": 2,
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": "off",
     "no-var": 0,
     "no-void": 0,
     "no-warning-comments": 0,

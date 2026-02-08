@@ -1,58 +1,58 @@
-/* global __dirname, require, module*/
+/* global __dirname, module*/
 
-const webpack = require('webpack');
 const path = require('path');
-const env = require('yargs').argv.env; // use --env with webpack 2
-const pkg = require('./package.json');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 let libraryName = 'zeu';
 
-let outputFile, mode;
+module.exports = (env) => {
+  let outputFile, mode;
 
-if (env === 'build') {
-  mode = 'production';
-  outputFile = libraryName + '.min.js';
-} else {
-  mode = 'development';
-  outputFile = libraryName + '.js';
-}
+  if (env.build) {
+    mode = 'production';
+    outputFile = libraryName + '.min.js';
+  } else {
+    mode = 'development';
+    outputFile = libraryName + '.js';
+  }
 
-const config = {
-  mode: mode,
-  entry: __dirname + '/src/index.js',
-  devtool: 'source-map',
-  output: {
-    path: __dirname + '/dist',
-    filename: outputFile,
-    library: libraryName,
-    libraryTarget: 'umd',
-    umdNamedDefine: true
-  },
-  module: {
-    rules: [
-      {
-        test: /(\.jsx|\.js)$/,
-        loader: 'babel-loader',
-        exclude: /(node_modules|bower_components)/
+  return {
+    mode: mode,
+    entry: path.join(__dirname, '/src/index.ts'),
+    devtool: 'source-map',
+    output: {
+      path: path.join(__dirname, '/dist'),
+      filename: outputFile,
+      library: {
+        name: libraryName,
+        type: 'umd',
+        export: 'default'
       },
-      {
-        test: /(\.jsx|\.js)$/,
-        loader: 'eslint-loader',
-        exclude: /node_modules/
-      }
+      globalObject: 'typeof self !== "undefined" ? self : this'
+    },
+    module: {
+      rules: [
+        {
+          test: /\.ts$/,
+          loader: 'ts-loader',
+          exclude: /node_modules/
+        },
+        {
+          test: /(\.jsx|\.js)$/,
+          loader: 'babel-loader',
+          exclude: /(node_modules|bower_components)/
+        }
+      ]
+    },
+    resolve: {
+      modules: [path.resolve('./node_modules'), path.resolve('./src')],
+      extensions: ['.json', '.js', '.ts']
+    },
+    plugins: [
+      new ESLintPlugin({
+        extensions: ['js', 'jsx'],
+        exclude: 'node_modules'
+      })
     ]
-  },
-  resolve: {
-    modules: [path.resolve('./node_modules'), path.resolve('./src')],
-    extensions: ['.json', '.js']
-  },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"production"'
-    }),
-    new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.optimize.AggressiveMergingPlugin()
-  ]
+  };
 };
-
-module.exports = config;

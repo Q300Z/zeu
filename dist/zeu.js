@@ -2,3539 +2,2521 @@
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define("zeu", [], factory);
+		define([], factory);
 	else if(typeof exports === 'object')
 		exports["zeu"] = factory();
 	else
 		root["zeu"] = factory();
-})(window, function() {
-return /******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// define __esModule on exports
-/******/ 	__webpack_require__.r = function(exports) {
-/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 		}
-/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 	};
-/******/
-/******/ 	// create a fake namespace object
-/******/ 	// mode & 1: value is a module id, require it
-/******/ 	// mode & 2: merge all properties of value into the ns
-/******/ 	// mode & 4: return value when already ns object
-/******/ 	// mode & 8|1: behave like require
-/******/ 	__webpack_require__.t = function(value, mode) {
-/******/ 		if(mode & 1) value = __webpack_require__(value);
-/******/ 		if(mode & 8) return value;
-/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
-/******/ 		var ns = Object.create(null);
-/******/ 		__webpack_require__.r(ns);
-/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
-/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
-/******/ 		return ns;
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-/******/
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/index.js");
-/******/ })
-/************************************************************************/
-/******/ ({
+})(Object(typeof self !== "undefined" ? self : this), () => {
+return /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/animation-timer.js":
+/***/ "./src/animation-timer.ts"
 /*!********************************!*\
-  !*** ./src/animation-timer.js ***!
+  !*** ./src/animation-timer.ts ***!
   \********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./global */ "./src/global.ts");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _global = __webpack_require__(/*! ./global */ "./src/global.js");
-
-var _settings = _interopRequireDefault(__webpack_require__(/*! ./settings */ "./src/settings.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var AnimationTimer =
-/*#__PURE__*/
-function () {
-  function AnimationTimer() {
-    _classCallCheck(this, AnimationTimer);
-
-    // Bind the render function.
-    this.render = this.render.bind(this); // Animation parameters.
-
-    this._fps = _settings.default._fps;
-    this._fpsInterval = 1000 / this._fps;
-    this._lastFrame = Date.now(); // Cross browser.
-
-    if (!window.requestAnimationFrame) {
-      window.requestAnimFrame = function () {
-        return window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame;
-      };
-    }
-  }
-
-  _createClass(AnimationTimer, [{
-    key: "render",
-    value: function render() {
-      // FPS control
-      var now = Date.now();
-      var elapsed = now - this._lastFrame;
-
-      if (elapsed > this._fpsInterval) {
-        this._lastFrame = now - elapsed % this._fpsInterval; // Draw
-
-        for (var i = 0; i < _global.GLOBAL.requestAnimationFrameArray.length; i++) {
-          var drawFrameObj = _global.GLOBAL.requestAnimationFrameArray[i]; // Buy me some time.
-
-          /*
-          setTimeout(() => {
-            drawFrameObj.func.call(drawFrameObj.self);
-          }, 0);
-          */
-
-          drawFrameObj.func.call();
+class AnimationTimer {
+    constructor() {
+        // Bind the render function.
+        this.render = this.render.bind(this);
+        // Animation parameters.
+        this._fps = 60;
+        this._fpsInterval = 1000 / this._fps;
+        this._lastFrame = Date.now();
+        // Cross browser.
+        if (!window.requestAnimationFrame) {
+            window.requestAnimFrame = () => {
+                return window.webkitRequestAnimationFrame(this.render) ||
+                    window.mozRequestAnimationFrame(this.render) ||
+                    window.oRequestAnimationFrame(this.render) ||
+                    window.msRequestAnimationFrame(this.render);
+            };
         }
-      }
-
-      window.requestAnimationFrame(this.render);
     }
-  }, {
-    key: "setFps",
-    value: function setFps(fps) {
-      this._fps = fps;
-      this._fpsInterval = 1000 / this._fps;
+    render() {
+        // FPS control
+        const now = Date.now();
+        const elapsed = now - this._lastFrame;
+        if (elapsed > this._fpsInterval) {
+            this._lastFrame = now - (elapsed % this._fpsInterval);
+            // Draw
+            for (let i = 0; i < _global__WEBPACK_IMPORTED_MODULE_0__.GLOBAL.requestAnimationFrameArray.length; i++) {
+                const drawFrameObj = _global__WEBPACK_IMPORTED_MODULE_0__.GLOBAL.requestAnimationFrameArray[i];
+                drawFrameObj.func.call(drawFrameObj.self);
+            }
+        }
+        window.requestAnimationFrame(this.render);
     }
-  }]);
+    setFps(fps) {
+        this._fps = fps;
+        this._fpsInterval = 1000 / this._fps;
+    }
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new AnimationTimer());
 
-  return AnimationTimer;
-}();
 
-var _default = new AnimationTimer();
+/***/ },
 
-exports.default = _default;
-module.exports = exports["default"];
-
-/***/ }),
-
-/***/ "./src/bar-meter.js":
+/***/ "./src/bar-meter.ts"
 /*!**************************!*\
-  !*** ./src/bar-meter.js ***!
+  !*** ./src/bar-meter.ts ***!
   \**************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ BarMeter)
+/* harmony export */ });
+/* harmony import */ var _color__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./color */ "./src/color.ts");
+/* harmony import */ var _utility__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utility */ "./src/utility.ts");
+/* harmony import */ var _base_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./base-component */ "./src/base-component.ts");
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
 
-var _color = __webpack_require__(/*! ./color */ "./src/color.js");
-
-var _utility = _interopRequireDefault(__webpack_require__(/*! ./utility */ "./src/utility.js"));
-
-var _baseComponent = _interopRequireDefault(__webpack_require__(/*! ./base-component */ "./src/base-component.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var BarMeter =
-/*#__PURE__*/
-function (_BaseComponent) {
-  _inherits(BarMeter, _BaseComponent);
-
-  function BarMeter(canvas) {
-    var _this;
-
-    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-    _classCallCheck(this, BarMeter);
-
-    var viewWidth = options.viewWidth || 100;
-    _this = _possibleConstructorReturn(this, (BarMeter.__proto__ || Object.getPrototypeOf(BarMeter)).call(this, canvas, options, viewWidth, 200));
-    _this._barWidth = _this._viewWidth - 2 * _this._space;
-    _this._barHeight = 15;
-    _this._currBar = 0;
-    _this._numberOfBars = Math.floor((_this._value - _this._min) / (_this._max - _this._min) * 10);
-    _this._barMax = _this._numberOfBars * 100;
-    return _this;
-  }
-
-  _createClass(BarMeter, [{
-    key: "setOptions",
-    value: function setOptions() {
-      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      this._min = options.min || 0;
-      this._max = options.max || 100;
-      this._value = options.value || 0;
-      this.dashColor = options.dashColor || _color.COLOR.grey;
-      this.barColor = options.barColor || _color.COLOR.green;
-      this.speed = options.speed || 5;
-      this._isGradient = options.gradient || false;
-      this._space = options.space || 20;
+class BarMeter extends _base_component__WEBPACK_IMPORTED_MODULE_2__["default"] {
+    constructor(canvas, options = {}) {
+        const viewWidth = options.viewWidth || 100;
+        super(canvas, options, viewWidth, 200);
+        this._currBar = 0;
+        this._barHeight = 15;
+        this._barWidth = this._viewWidth - 2 * this._space;
+        // Initial calculation
+        this._numberOfBars = Math.floor((this._value - this._min) / (this._max - this._min) * 10);
+        this._barMax = this._numberOfBars * 100;
     }
-  }, {
-    key: "drawObject",
-    value: function drawObject() {
-      // Draw the dash.
-      for (var i = 0; i < 10; i++) {
-        var y = 5 + i * 20;
-
-        this._shape.fillRect(this._space, y, this._barWidth, this._barHeight, this.dashColor);
-      } // Draw bars.
-
-
-      if (this._currBar >= this._barMax) {
-        this._currBar = -100;
-      } else {
-        var bar = this._currBar / 100;
-        var colors = [];
-
-        if (this._isGradient) {
-          colors = _utility.default.generateGradientColor(_color.COLOR.white, this.barColor, bar);
-        } else {
-          this._ctx.fillStyle = this.barColor;
+    setOptions(options = {}) {
+        this._min = options.min !== undefined ? options.min : 0;
+        this._max = options.max !== undefined ? options.max : 100;
+        this._value = options.value !== undefined ? options.value : 0;
+        this.dashColor = options.dashColor || (this.theme ? this.theme.grey : _color__WEBPACK_IMPORTED_MODULE_0__.COLOR.grey);
+        this.barColor = options.barColor || (this.theme ? this.theme.green : _color__WEBPACK_IMPORTED_MODULE_0__.COLOR.green);
+        this.speed = options.speed !== undefined ? options.speed : 5;
+        this._isGradient = options.gradient || false;
+        this._space = options.space !== undefined ? options.space : 20;
+    }
+    isAnimating() {
+        return this._currBar < this._barMax;
+    }
+    drawObject() {
+        this.drawOffscreen();
+        // Draw bars.
+        if (this._currBar >= this._barMax) {
+            this._currBar = -100;
         }
-
-        for (var _i = 0; _i < bar; _i++) {
-          var _y = this._viewHeight - (15 + _i * 20);
-
-          if (this._isGradient) {
-            this._ctx.fillStyle = '#' + colors[_i];
-          }
-
-          this._ctx.beginPath();
-
-          this._ctx.fillRect(this._space, _y, this._barWidth, this._barHeight);
-
-          this._ctx.closePath();
+        else {
+            const bar = this._currBar / 100;
+            let colors = [];
+            if (this._isGradient) {
+                colors = _utility__WEBPACK_IMPORTED_MODULE_1__["default"].generateGradientColor(this.theme.white, this.barColor, bar);
+            }
+            else {
+                this._ctx.fillStyle = this.barColor;
+            }
+            for (let i = 0; i < bar; i++) {
+                const y = this._viewHeight - (15 + i * 20);
+                if (this._isGradient) {
+                    this._ctx.fillStyle = '#' + colors[i];
+                }
+                this._ctx.beginPath();
+                this._ctx.fillRect(this._space, y, this._barWidth, this._barHeight);
+                this._ctx.closePath();
+            }
+            this._currBar += this.speed;
+            this._dirty = true;
         }
-
-        this._currBar += this.speed;
-      }
     }
-  }, {
-    key: "value",
-    set: function set(value) {
-      this._value = value;
-      this._numberOfBars = Math.floor((this._value - this._min) / (this._max - this._min) * 10);
-      this._barMax = this._numberOfBars * 100;
+    drawStatic() {
+        // Draw the dash.
+        for (let i = 0; i < 10; i++) {
+            const y = 5 + i * 20;
+            this._offscreenCtx.fillStyle = this.dashColor;
+            this._offscreenCtx.fillRect(this._space, y, this._barWidth, this._barHeight);
+        }
     }
-  }, {
-    key: "valuePct",
-    get: function get() {
-      return Math.floor((this._value - this._min) / (this._max - this._min) * 100);
+    set value(value) {
+        this._value = value;
+        this._numberOfBars = Math.floor((this._value - this._min) / (this._max - this._min) * 10);
+        this._barMax = this._numberOfBars * 100;
+        this._dirty = true;
     }
-  }]);
+    get valuePct() {
+        return Math.floor((this._value - this._min) / (this._max - this._min) * 100);
+    }
+}
 
-  return BarMeter;
-}(_baseComponent.default);
 
-exports.default = BarMeter;
-module.exports = exports["default"];
+/***/ },
 
-/***/ }),
-
-/***/ "./src/base-component.js":
+/***/ "./src/base-component.ts"
 /*!*******************************!*\
-  !*** ./src/base-component.js ***!
+  !*** ./src/base-component.ts ***!
   \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _global = __webpack_require__(/*! ./global */ "./src/global.js");
-
-var _utility = _interopRequireDefault(__webpack_require__(/*! ./utility */ "./src/utility.js"));
-
-var _shape = _interopRequireDefault(__webpack_require__(/*! ./shape */ "./src/shape.js"));
-
-var _color = __webpack_require__(/*! ./color */ "./src/color.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var BaseComponent =
-/*#__PURE__*/
-function () {
-  function BaseComponent(canvas) {
-    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    var viewWidth = arguments[2];
-    var viewHeight = arguments[3];
-
-    _classCallCheck(this, BaseComponent);
-
-    // Canvas
-    this._canvas = document.getElementById(canvas); // Canvas 2d context
-
-    this._ctx = this._canvas.getContext('2d'); // Current X value (Left 0 to right)
-
-    this._x = 0; // Current Y value (Top 0 to bottom)
-
-    this._y = 0; // The width and height used to draw the component.
-
-    this._viewWidth = viewWidth;
-    this._viewHeight = viewHeight; // Scale parameters used in scale()
-
-    this._scaleX = 1;
-    this._scaleY = 1; // Get canvas height
-
-    var canvasHeight = this._canvas.height || this._canvas.parentNode.clientHeight || viewHeight; // Set acutal width and height of the component based on scales.
-
-    this.scaleByHeight(canvasHeight);
-    this._display = true; // Event queue that stores animation movements like 'move', 'scale', 'display' and etc.
-
-    this._eventQueue = []; // Bind the drawFrame function.
-
-    this.drawFrame = this.drawFrame.bind(this); // Init Shape instance.
-
-    this._shape = new _shape.default(this._ctx);
-    var alert = {
-      on: false,
-      lastCall: 0,
-      dashOffSet: 0,
-      text: '',
-      interval: 1500,
-      lineColor: _color.COLOR.red,
-      fontColor: _color.COLOR.red,
-      bgColor: _color.COLOR.yellow
-    };
-    this._alert = alert;
-    this.alertFunc = this.alertFunc.bind(this); // Set options
-
-    this.setOptions(options); // Post constructor.
-
-    this.postConstructor();
-  } // ********** INTERNAL API **********
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ BaseComponent)
+/* harmony export */ });
+/* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./global */ "./src/global.ts");
+/* harmony import */ var _utility__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utility */ "./src/utility.ts");
+/* harmony import */ var _shape__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./shape */ "./src/shape.ts");
+/* harmony import */ var _color__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./color */ "./src/color.ts");
+/* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./theme */ "./src/theme.ts");
 
 
-  _createClass(BaseComponent, [{
-    key: "setOptions",
-    value: function setOptions(options) {}
-  }, {
-    key: "postConstructor",
-    value: function postConstructor() {
-      this.removeFromAnimationQueue();
-      this.addToAnimationQueue();
+
+
+
+class BaseComponent {
+    get theme() {
+        return _theme__WEBPACK_IMPORTED_MODULE_4__.ThemeManager.getInstance().theme;
     }
-  }, {
-    key: "drawFrame",
-    value: function drawFrame() {
-      // Check movement
-      if (this._eventQueue.length > 0) {
-        var event = this._eventQueue[0];
-
-        if (event.type === 'move') {
-          if (this._x === event.destX && this._y === event.destY) {
-            this._eventQueue.shift();
-          } else {
-            this._x = _utility.default.getNextPos(this._x, event.destX, event.speedX);
-            this._y = _utility.default.getNextPos(this._y, event.destY, event.speedY);
-          }
+    constructor(canvasId, options = {}, viewWidth, viewHeight) {
+        var _a;
+        // Canvas
+        const canvasElement = document.getElementById(canvasId);
+        if (!canvasElement || !(canvasElement instanceof HTMLCanvasElement)) {
+            throw new Error(`Canvas element with id '${canvasId}' not found or is not a canvas.`);
         }
-      } // Check display or not.
-
-
-      if (!this.isDisplay()) {
-        return;
-      }
-
-      this.clear();
-      this.save();
-      this.drawObject();
-
-      this._ctx.restore();
-
-      if (this.isAlert()) {
+        this._canvas = canvasElement;
+        // Canvas 2d context
+        const context = this._canvas.getContext('2d');
+        if (!context) {
+            throw new Error('Could not get 2d context from canvas.');
+        }
+        this._ctx = context;
+        // HiDPI support
+        _utility__WEBPACK_IMPORTED_MODULE_1__["default"].prepareCanvas(this._canvas, this._ctx);
+        // Offscreen canvas for pre-rendering
+        this._offscreenCanvas = document.createElement('canvas');
+        const offscreenContext = this._offscreenCanvas.getContext('2d');
+        if (!offscreenContext) {
+            throw new Error('Could not get 2d context from offscreen canvas.');
+        }
+        this._offscreenCtx = offscreenContext;
+        this._staticRendered = false;
+        // Current X value (Left 0 to right)
+        this._x = 0;
+        // Current Y value (Top 0 to bottom)
+        this._y = 0;
+        // The width and height used to draw the component.
+        this._viewWidth = viewWidth;
+        this._viewHeight = viewHeight;
+        // Initialize width/height
+        this._width = viewWidth;
+        this._height = viewHeight;
+        // Scale parameters used in scale()
+        this._scaleX = 1;
+        this._scaleY = 1;
+        // Get canvas height
+        const canvasHeight = this._canvas.height || ((_a = this._canvas.parentNode) === null || _a === void 0 ? void 0 : _a.clientHeight) || viewHeight;
+        // Set actual width and height of the component based on scales.
+        this.scaleByHeight(canvasHeight);
+        this._display = true;
+        // Event queue that stores animation movements like 'move', 'scale', 'display' and etc.
+        this._eventQueue = [];
+        // Bind the drawFrame function.
+        this.drawFrame = this.drawFrame.bind(this);
+        // Init Shape instance.
+        this._shape = new _shape__WEBPACK_IMPORTED_MODULE_2__["default"](this._ctx);
+        const alert = {
+            on: false,
+            lastCall: 0,
+            dashOffSet: 0,
+            text: '',
+            interval: 1500,
+            lineColor: _color__WEBPACK_IMPORTED_MODULE_3__.COLOR.red,
+            fontColor: _color__WEBPACK_IMPORTED_MODULE_3__.COLOR.red,
+            bgColor: _color__WEBPACK_IMPORTED_MODULE_3__.COLOR.yellow
+        };
+        this._alert = alert;
+        this.alertFunc = this.alertFunc.bind(this);
+        this._dirty = true;
+        // Theme subscription
+        this._themeListener = () => {
+            this._dirty = true;
+            this._staticRendered = false; // Invalidate offscreen cache
+        };
+        _theme__WEBPACK_IMPORTED_MODULE_4__.ThemeManager.getInstance().subscribe(this._themeListener);
+        // Set options
+        this.setOptions(options);
+        // Post constructor.
+        this.postConstructor();
+    }
+    // ********** INTERNAL API **********
+    /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
+    setOptions(_options) { }
+    postConstructor() {
+        this.removeFromAnimationQueue();
+        this.addToAnimationQueue();
+    }
+    drawFrame() {
+        // Check movement
+        if (this._eventQueue.length > 0) {
+            const event = this._eventQueue[0];
+            if (event.type === 'move') {
+                if (this._x === event.destX && this._y === event.destY) {
+                    this._eventQueue.shift();
+                }
+                else {
+                    this._x = _utility__WEBPACK_IMPORTED_MODULE_1__["default"].getNextPos(this._x, event.destX, event.speedX);
+                    this._y = _utility__WEBPACK_IMPORTED_MODULE_1__["default"].getNextPos(this._y, event.destY, event.speedY);
+                    this._dirty = true;
+                }
+            }
+        }
+        // Check display or not.
+        if (!this.isDisplay() || (!this._dirty && !this.isAlert())) {
+            return;
+        }
+        this.clear();
         this.save();
-        this._alert.lastCall = this.nextAlert(this.alertFunc, this._alert.lastCall, this._alert.interval);
-
+        this.drawObject();
         this._ctx.restore();
-      }
+        if (this.isAlert()) {
+            this.save();
+            this._alert.lastCall = this.nextAlert(this.alertFunc, this._alert.lastCall, this._alert.interval);
+            this._ctx.restore();
+        }
+        // Reset dirty flag if not animating or alerting
+        if (this._eventQueue.length === 0 && !this.isAlert() && !this.isAnimating()) {
+            this._dirty = false;
+        }
     }
-  }, {
-    key: "drawObject",
-    value: function drawObject() {}
-  }, {
-    key: "clear",
-    value: function clear() {
-      this._ctx.clearRect(this._x, this._y, this._width, this._height);
+    isAnimating() {
+        return false;
     }
-  }, {
-    key: "scale",
-    value: function scale() {
-      this._ctx.scale(this._scaleX, this._scaleY);
+    drawObject() { }
+    drawStatic() {
+        // Override this to draw static elements to this._offscreenCtx
     }
-  }, {
-    key: "save",
-    value: function save() {
-      this._ctx.save();
-
-      this.scale();
+    drawOffscreen() {
+        if (!this._staticRendered) {
+            this.drawStatic();
+            this._staticRendered = true;
+        }
+        this._ctx.drawImage(this._offscreenCanvas, 0, 0, this._offscreenCanvas.width, this._offscreenCanvas.height, this._x, this._y, this._width, this._height);
     }
-  }, {
-    key: "addToAnimationQueue",
-    value: function addToAnimationQueue() {
-      var index = this.getAnimationFrameArrayPos();
-
-      if (index === -1) {
-        _global.GLOBAL.requestAnimationFrameArray.push(this.drawFrameObj());
-      }
+    clear() {
+        this._ctx.clearRect(this._x, this._y, this._width, this._height);
     }
-  }, {
-    key: "removeFromAnimationQueue",
-    value: function removeFromAnimationQueue() {
-      var index = this.getAnimationFrameArrayPos();
-
-      if (index !== -1) {
-        _global.GLOBAL.requestAnimationFrameArray.splice(index, 1);
-      }
+    scale() {
+        this._ctx.scale(this._scaleX, this._scaleY);
     }
-  }, {
-    key: "drawFrameObj",
-    value: function drawFrameObj() {
-      return {
-        func: this.drawFrame,
-        self: this
-      };
+    save() {
+        this._ctx.save();
+        this.scale();
     }
-  }, {
-    key: "getAnimationFrameArrayPos",
-    value: function getAnimationFrameArrayPos() {
-      var _this = this;
-
-      return _global.GLOBAL.requestAnimationFrameArray.findIndex(function (obj) {
-        return obj.self._canvas.id === _this._canvas.id;
-      });
+    addToAnimationQueue() {
+        const index = this.getAnimationFrameArrayPos();
+        if (index === -1) {
+            _global__WEBPACK_IMPORTED_MODULE_0__.GLOBAL.requestAnimationFrameArray.push(this.drawFrameObj());
+        }
     }
-  }, {
-    key: "nextAlert",
-    value: function nextAlert(alertFunc, lastAlert, interval) {
-      var now = Date.now();
-
-      if (now - lastAlert < interval) {
-        alertFunc.call();
-        return lastAlert;
-      } else if (now - lastAlert < interval * 2) {
-        return lastAlert;
-      }
-
-      return now;
+    removeFromAnimationQueue() {
+        const index = this.getAnimationFrameArrayPos();
+        if (index !== -1) {
+            _global__WEBPACK_IMPORTED_MODULE_0__.GLOBAL.requestAnimationFrameArray.splice(index, 1);
+        }
     }
-  }, {
-    key: "alertFunc",
-    value: function alertFunc() {
-      this._shape.fillRect(this._x, this._y, this._width, this._height, this._alert.bgColor);
-
-      this._ctx.setLineDash([20, 16]);
-
-      this._ctx.lineDashOffset = -this._alert.dashOffSet;
-      this._ctx.lineWidth = 20;
-      this._ctx.strokeStyle = this._alert.lineColor;
-
-      this._ctx.strokeRect(this._x, this._y, this._width, this._height);
-
-      this._alert.dashOffSet++;
-
-      if (this._alert.dashOffSet > 32) {
-        this._alert.dashOffSet = 0;
-      }
-
-      this._shape.fillText(this._alert.text, (this._width - this._x) / 2, (this._height - this._y) / 2 + 10, 'Bold 30px Arial', 'center', this._alert.fontColor);
-    } // ********** EXTERNAL API **********
-
+    drawFrameObj() {
+        return {
+            func: this.drawFrame,
+            self: this
+        };
+    }
+    getAnimationFrameArrayPos() {
+        return _global__WEBPACK_IMPORTED_MODULE_0__.GLOBAL.requestAnimationFrameArray.findIndex(obj => obj.self === this);
+    }
+    get isAnimationOn() {
+        return this.getAnimationFrameArrayPos() !== -1;
+    }
+    nextAlert(alertFunc, lastAlert, interval) {
+        const now = Date.now();
+        if (now - lastAlert < interval) {
+            alertFunc.call(this);
+            return lastAlert;
+        }
+        else if (now - lastAlert < (interval * 2)) {
+            return lastAlert;
+        }
+        return now;
+    }
+    alertFunc() {
+        this._shape.fillRect(this._x, this._y, this._width, this._height, this._alert.bgColor);
+        this._ctx.setLineDash([20, 16]);
+        this._ctx.lineDashOffset = -this._alert.dashOffSet;
+        this._ctx.lineWidth = 20;
+        this._ctx.strokeStyle = this._alert.lineColor;
+        this._ctx.strokeRect(this._x, this._y, this._width, this._height);
+        this._alert.dashOffSet++;
+        if (this._alert.dashOffSet > 32) {
+            this._alert.dashOffSet = 0;
+        }
+        this._shape.fillText(this._alert.text, (this._width - this._x) / 2, (this._height - this._y) / 2 + 10, 'Bold 30px Arial', 'center', this._alert.fontColor);
+    }
+    // ********** EXTERNAL API **********
     /**
      * Destroy.
      */
-
-  }, {
-    key: "destroy",
-    value: function destroy() {
-      this.removeFromAnimationQueue();
-      this.clear();
-      this._canvas = null;
-      this._ctx = null;
-      this._alert = null;
+    destroy() {
+        _theme__WEBPACK_IMPORTED_MODULE_4__.ThemeManager.getInstance().unsubscribe(this._themeListener);
+        this.removeFromAnimationQueue();
+        this.clear();
+        // Releasing references
+        // @ts-expect-error: Intentional cleanup
+        this._canvas = null;
+        // @ts-expect-error: Intentional cleanup
+        this._ctx = null;
+        // @ts-expect-error: Intentional cleanup
+        this._alert = null;
     }
     /**
      * Turn on alert.
      */
-
-  }, {
-    key: "alertOn",
-    value: function alertOn() {
-      var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      this._alert.text = params.text || 'ALERT';
-      this._alert.interval = params.interval || 1500;
-      this._alert.bgColor = params.bgColor || _color.COLOR.yellow;
-      this._alert.fontColor = params.fontColor || _color.COLOR.red;
-      this._alert.lineColor = params.lineColor || _color.COLOR.red;
-      this._alert.on = true;
+    alertOn(params = {}) {
+        this._alert.text = params.text || 'ALERT';
+        this._alert.interval = params.interval || 1500;
+        this._alert.bgColor = params.bgColor || _color__WEBPACK_IMPORTED_MODULE_3__.COLOR.yellow;
+        this._alert.fontColor = params.fontColor || _color__WEBPACK_IMPORTED_MODULE_3__.COLOR.red;
+        this._alert.lineColor = params.lineColor || _color__WEBPACK_IMPORTED_MODULE_3__.COLOR.red;
+        this._alert.on = true;
+        this._dirty = true;
     }
     /**
      * Turn off alert.
      */
-
-  }, {
-    key: "alertOff",
-    value: function alertOff() {
-      this._alert.on = false;
+    alertOff() {
+        this._alert.on = false;
+        this._dirty = true;
     }
-  }, {
-    key: "isAlert",
-    value: function isAlert() {
-      return this._alert.on;
+    isAlert() {
+        return this._alert.on;
     }
-  }, {
-    key: "moveTo",
-    value: function moveTo(destX, destY, duration) {
-      var srcX = this._x;
-      var srcY = this._y; // Find last move event.
-
-      for (var i = this._eventQueue.length - 1; i >= 0; i--) {
-        var event = this._eventQueue[i];
-
-        if (event.type === 'move') {
-          srcX = event.destX;
-          srcY = event.destY;
-          break;
-        }
-      } // Calculate the speed.
-
-
-      var speed = duration / 60;
-      var sX = Math.abs(destX - srcX) / speed;
-      var sY = Math.abs(destY - srcY) / speed;
-      var speedX = destX > srcX ? sX : -sX;
-      var speedY = destY > srcY ? sY : -sY; // Push the movement to the queue.
-
-      this._eventQueue.push({
-        type: 'move',
-        destX: destX,
-        destY: destY,
-        speedX: speedX,
-        speedY: speedY
-      });
-
-      return this;
-    }
-  }, {
-    key: "scaleTo",
-    value: function scaleTo(x, y) {
-      this._scaleX = x;
-      this._scaleY = y;
-      this._width = this._scaleX * this._viewWidth;
-      this._height = this._scaleY * this._viewHeight;
-      return this;
-    }
-  }, {
-    key: "scaleByHeight",
-    value: function scaleByHeight(height) {
-      this._scaleY = height / this._viewHeight;
-      this._scaleX = this._scaleY;
-      this._width = this._scaleX * this._viewWidth;
-      this._height = this._scaleY * this._viewHeight;
-      return this;
-    }
-  }, {
-    key: "show",
-    value: function show() {
-      this._display = true;
-    }
-  }, {
-    key: "hide",
-    value: function hide() {
-      this._display = false;
-    }
-  }, {
-    key: "isDisplay",
-    value: function isDisplay() {
-      return this._display;
-    }
-  }, {
-    key: "isAnimationOn",
-    get: function get() {
-      return this.getAnimationFrameArrayPos() !== -1;
-    }
-  }, {
-    key: "canvas",
-    get: function get() {
-      return this._canvas;
-    }
-  }, {
-    key: "context",
-    get: function get() {
-      return this._ctx;
-    }
-  }, {
-    key: "eventQueue",
-    get: function get() {
-      return this._eventQueue;
-    }
-  }, {
-    key: "viewWidth",
-    get: function get() {
-      return this._viewWidth;
-    }
-  }, {
-    key: "viewHeight",
-    get: function get() {
-      return this._viewHeight;
-    }
-  }]);
-
-  return BaseComponent;
-}();
-
-exports.default = BaseComponent;
-module.exports = exports["default"];
-
-/***/ }),
-
-/***/ "./src/color.js":
-/*!**********************!*\
-  !*** ./src/color.js ***!
-  \**********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.COLOR = void 0;
-var COLOR = {
-  lightGreen: '#00d7af',
-  lightWhite: '#f8f8ff',
-  lightGrey: '#e0e0e0',
-  lightBlack: '#343a42',
-  black: '#000000',
-  white: '#ffffff',
-  red: '#dc3547',
-  blue: '#007bfb',
-  yellow: '#ffc108',
-  cyan: '#17a2b9',
-  grey: '#6c757e',
-  green: '#28a748',
-  orange: '#ffa500',
-  transparent: 'rgba(255, 255, 255, 0)'
-};
-exports.COLOR = COLOR;
-
-/***/ }),
-
-/***/ "./src/digital-clock.js":
-/*!******************************!*\
-  !*** ./src/digital-clock.js ***!
-  \******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _utility = _interopRequireDefault(__webpack_require__(/*! ./utility */ "./src/utility.js"));
-
-var _color = __webpack_require__(/*! ./color */ "./src/color.js");
-
-var _baseComponent = _interopRequireDefault(__webpack_require__(/*! ./base-component */ "./src/base-component.js"));
-
-var _digitalSymbol = _interopRequireDefault(__webpack_require__(/*! ./digital-symbol */ "./src/digital-symbol.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
-
-function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var DigitalClock =
-/*#__PURE__*/
-function (_BaseComponent) {
-  _inherits(DigitalClock, _BaseComponent);
-
-  function DigitalClock(canavs) {
-    var _this;
-
-    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-    _classCallCheck(this, DigitalClock);
-
-    _this = _possibleConstructorReturn(this, (DigitalClock.__proto__ || Object.getPrototypeOf(DigitalClock)).call(this, canavs, options, 400, 100));
-    _this._barWidth = 8;
-    _this._space = 12;
-    _this._numberWidth = 50;
-    _this._numberHeight = 100;
-    _this._ds = new _digitalSymbol.default(_this._ctx, _this._barWidth, _this._numberWidth, _this._numberHeight, _this._dashColor, _this._numberColor);
-    _this._timer = null;
-    return _this;
-  }
-
-  _createClass(DigitalClock, [{
-    key: "postConstructor",
-    value: function postConstructor() {
-      this.tick();
-    }
-  }, {
-    key: "setOptions",
-    value: function setOptions() {
-      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      this._numberColor = options.numberColor || _color.COLOR.red;
-      this._dashColor = options.dashColor || _color.COLOR.lightGrey;
-      this._hourOffset = options.hourOffset || 0;
-    }
-  }, {
-    key: "destroy",
-    value: function destroy() {
-      this.stopTick();
-
-      _get(DigitalClock.prototype.__proto__ || Object.getPrototypeOf(DigitalClock.prototype), "destroy", this).call(this);
-    }
-  }, {
-    key: "tick",
-    value: function tick() {
-      var _this2 = this;
-
-      if (this._timer == null) {
-        this._timer = setInterval(function () {
-          _this2.drawTime();
-        }, 1000);
-      }
-    }
-  }, {
-    key: "stopTick",
-    value: function stopTick() {
-      if (this._timer != null) {
-        clearInterval(this._timer);
-        this._timer = null;
-      }
-    }
-  }, {
-    key: "drawTime",
-    value: function drawTime() {
-      var now = _utility.default.addHour(this._hourOffset);
-
-      this.clear();
-      this.save();
-      this.drawTwoDigits(this._ds, now.getHours(), this._numberWidth + this._space);
-
-      this._ds.drawColon();
-
-      this._ctx.translate(this._barWidth + this._space, 0);
-
-      this.drawTwoDigits(this._ds, now.getMinutes(), this._numberWidth + this._space);
-
-      this._ds.drawColon();
-
-      this._ctx.translate(this._barWidth + this._space, 0);
-
-      this.drawTwoDigits(this._ds, now.getSeconds(), this._numberWidth + this._space);
-
-      this._ctx.restore();
-    }
-  }, {
-    key: "drawTwoDigits",
-    value: function drawTwoDigits(digitalNumber, time, space) {
-      if (time < 10) {
-        digitalNumber.drawNumber(0);
-
-        this._ctx.translate(space, 0);
-
-        digitalNumber.drawNumber(time);
-
-        this._ctx.translate(space, 0);
-      } else {
-        var left = Math.floor(time / 10);
-        var right = time % 10;
-        digitalNumber.drawNumber(left);
-
-        this._ctx.translate(space, 0);
-
-        digitalNumber.drawNumber(right);
-
-        this._ctx.translate(space, 0);
-      }
-    }
-  }]);
-
-  return DigitalClock;
-}(_baseComponent.default);
-
-exports.default = DigitalClock;
-module.exports = exports["default"];
-
-/***/ }),
-
-/***/ "./src/digital-symbol.js":
-/*!*******************************!*\
-  !*** ./src/digital-symbol.js ***!
-  \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var DigitalSymbol =
-/*#__PURE__*/
-function () {
-  function DigitalSymbol(ctx, barWidth, numberWidth, numberHeight, dashColor, numberColor) {
-    _classCallCheck(this, DigitalSymbol);
-
-    this._ctx = ctx;
-    this._barWidth = barWidth;
-    this._verBarHeight = (numberHeight - 3 * barWidth) / 2;
-    this._horBarHeight = numberWidth - 2 * barWidth;
-    this._dashColor = dashColor;
-    this._numberColor = numberColor;
-  }
-
-  _createClass(DigitalSymbol, [{
-    key: "drawColon",
-    value: function drawColon() {
-      this._ctx.beginPath();
-
-      this._ctx.fillStyle = this._numberColor;
-
-      this._ctx.fillRect(0, (this._verBarHeight * 2 + this._barWidth) / 3, this._barWidth, this._barWidth);
-
-      this._ctx.fillRect(0, (this._verBarHeight * 2 + this._barWidth) / 3 * 2 + this._barWidth, this._barWidth, this._barWidth);
-
-      this._ctx.closePath();
-    }
-  }, {
-    key: "drawEmpty",
-    value: function drawEmpty() {
-      this._ctx.beginPath();
-
-      this._ctx.fillStyle = this._dashColor;
-
-      this._ctx.moveTo(0, 0);
-
-      this.topLeft();
-      this.bottomLeft();
-      this.topRight();
-      this.bottomRight();
-      this.top();
-      this.middle();
-      this.bottom();
-
-      this._ctx.closePath();
-    } // Vertical: top left
-
-  }, {
-    key: "topLeft",
-    value: function topLeft() {
-      this._ctx.fillRect(0, this._barWidth, this._barWidth, this._verBarHeight);
-    } // Vertical: bottom left
-
-  }, {
-    key: "bottomLeft",
-    value: function bottomLeft() {
-      this._ctx.fillRect(0, this._barWidth * 2 + this._verBarHeight, this._barWidth, this._verBarHeight);
-    } // Vertial: top right
-
-  }, {
-    key: "topRight",
-    value: function topRight() {
-      this._ctx.fillRect(this._barWidth + this._horBarHeight, this._barWidth, this._barWidth, this._verBarHeight);
-    } // Vertial: bottom right
-
-  }, {
-    key: "bottomRight",
-    value: function bottomRight() {
-      this._ctx.fillRect(this._barWidth + this._horBarHeight, this._barWidth * 2 + this._verBarHeight, this._barWidth, this._verBarHeight);
-    } // Horizontal: top
-
-  }, {
-    key: "top",
-    value: function top() {
-      this._ctx.fillRect(this._barWidth, 0, this._horBarHeight, this._barWidth);
-    } // Horizontal: middle
-
-  }, {
-    key: "middle",
-    value: function middle() {
-      this._ctx.fillRect(this._barWidth, this._barWidth + this._verBarHeight, this._horBarHeight, this._barWidth);
-    } // Horizontal: bottom
-
-  }, {
-    key: "bottom",
-    value: function bottom() {
-      this._ctx.fillRect(this._barWidth, this._barWidth * 2 + this._verBarHeight * 2, this._horBarHeight, this._barWidth);
-    }
-  }, {
-    key: "drawNumber",
-    value: function drawNumber(number) {
-      this.drawEmpty();
-
-      this._ctx.beginPath();
-
-      this._ctx.fillStyle = this._numberColor;
-
-      switch (number) {
-        case 0:
-          this.top();
-          this.bottom();
-          this.topLeft();
-          this.topRight();
-          this.bottomLeft();
-          this.bottomRight();
-          break;
-
-        case 1:
-          this.topRight();
-          this.bottomRight();
-          break;
-
-        case 2:
-          this.top();
-          this.topRight();
-          this.middle();
-          this.bottomLeft();
-          this.bottom();
-          break;
-
-        case 3:
-          this.top();
-          this.middle();
-          this.bottom();
-          this.topRight();
-          this.bottomRight();
-          break;
-
-        case 4:
-          this.middle();
-          this.topLeft();
-          this.topRight();
-          this.bottomRight();
-          break;
-
-        case 5:
-          this.top();
-          this.middle();
-          this.bottom();
-          this.topLeft();
-          this.bottomRight();
-          break;
-
-        case 6:
-          this.top();
-          this.middle();
-          this.bottom();
-          this.topLeft();
-          this.bottomLeft();
-          this.bottomRight();
-          break;
-
-        case 7:
-          this.top();
-          this.topRight();
-          this.bottomRight();
-          break;
-
-        case 8:
-          this.topLeft();
-          this.bottomLeft();
-          this.topRight();
-          this.bottomRight();
-          this.top();
-          this.middle();
-          this.bottom();
-          break;
-
-        case 9:
-          this.top();
-          this.middle();
-          this.topLeft();
-          this.topRight();
-          this.bottomRight();
-          break;
-      }
-
-      this._ctx.closePath();
-    }
-  }]);
-
-  return DigitalSymbol;
-}();
-
-exports.default = DigitalSymbol;
-module.exports = exports["default"];
-
-/***/ }),
-
-/***/ "./src/global.js":
-/*!***********************!*\
-  !*** ./src/global.js ***!
-  \***********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.GLOBAL = void 0;
-var GLOBAL = {
-  requestAnimationFrameArray: []
-};
-exports.GLOBAL = GLOBAL;
-
-/***/ }),
-
-/***/ "./src/heartbeat.js":
-/*!**************************!*\
-  !*** ./src/heartbeat.js ***!
-  \**************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _utility = _interopRequireDefault(__webpack_require__(/*! ./utility */ "./src/utility.js"));
-
-var _color = __webpack_require__(/*! ./color */ "./src/color.js");
-
-var _baseComponent = _interopRequireDefault(__webpack_require__(/*! ./base-component */ "./src/base-component.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
-
-function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-/**
- * Allow override width
- * view height: 100
- */
-var Heartbeat =
-/*#__PURE__*/
-function (_BaseComponent) {
-  _inherits(Heartbeat, _BaseComponent);
-
-  function Heartbeat(canvas) {
-    var _this;
-
-    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-    _classCallCheck(this, Heartbeat);
-
-    var viewWidth = options.viewWidth || 200;
-    _this = _possibleConstructorReturn(this, (Heartbeat.__proto__ || Object.getPrototypeOf(Heartbeat)).call(this, canvas, options, viewWidth, 100));
-    _this._queue = [];
-    _this._lastSec = 0;
-    _this._timer = null;
-
-    _this.drawSeconds();
-
-    return _this;
-  }
-
-  _createClass(Heartbeat, [{
-    key: "setOptions",
-    value: function setOptions() {
-      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      this._speed = options.speed || 2;
-      this._fontColor = options.fontColor || _color.COLOR.black;
-      this._maxQueueCapacity = options.maxQueueCapacity || 30;
-    }
-  }, {
-    key: "postConstructor",
-    value: function postConstructor() {
-      _get(Heartbeat.prototype.__proto__ || Object.getPrototypeOf(Heartbeat.prototype), "postConstructor", this).call(this); // Start drawing the seconds
-
-
-      this.tick();
-    }
-  }, {
-    key: "destroy",
-    value: function destroy() {
-      if (this._timer != null) {
-        clearInterval(this._timer);
-      }
-
-      _get(Heartbeat.prototype.__proto__ || Object.getPrototypeOf(Heartbeat.prototype), "destroy", this).call(this);
-    }
-  }, {
-    key: "beat",
-    value: function beat() {
-      var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      var beatColor = params.color || _color.COLOR.green;
-      var beatSpace = params.space || 0;
-
-      if (this._queue.length >= this._maxQueueCapacity) {
-        this._queue.shift();
-      }
-
-      this._queue.push({
-        time: null,
-        x: -30,
-        color: beatColor,
-        space: beatSpace
-      });
-    }
-  }, {
-    key: "tick",
-    value: function tick() {
-      var _this2 = this;
-
-      if (this._timer == null) {
-        this._timer = setInterval(function () {
-          _this2.drawSeconds();
-        }, 1000);
-      }
-    }
-  }, {
-    key: "drawSeconds",
-    value: function drawSeconds() {
-      if (this._queue.length >= this._maxQueueCapacity) {
-        this._queue.shift();
-      }
-
-      var now = new Date();
-
-      var currSec = _utility.default.leftPadZero(now.getMinutes()) + ':' + _utility.default.leftPadZero(now.getSeconds());
-
-      if (currSec !== this._lastSec) {
-        this._queue.push({
-          time: currSec,
-          x: -30
-        });
-
-        this._lastSec = currSec;
-      }
-    }
-  }, {
-    key: "drawObject",
-    value: function drawObject() {
-      this._ctx.textAlign = 'center';
-      this._ctx.font = '12px Arial'; // Draw the horizontal line
-
-      this._shape.fillRect(0, 50, this._viewWidth, 2, this._fontColor); // Draw the pulse
-
-
-      for (var i = 0; i < this._queue.length; i++) {
-        var q = this._queue[i];
-
-        if (q.time != null) {
-          this._ctx.fillStyle = this._fontColor;
-
-          this._ctx.fillText(q.time, q.x, 90);
-
-          this._shape.fillRect(q.x - 1, 45, 2, 12, this._fontColor);
-        } else {
-          this._ctx.fillStyle = q.color;
-
-          this._ctx.beginPath();
-
-          this._ctx.moveTo(q.x - 10, 50);
-
-          this._ctx.quadraticCurveTo(q.x - 5, -20 + q.space * 2, q.x, 50);
-
-          this._ctx.quadraticCurveTo(q.x + 5, 100 - q.space * 1, q.x + 10, 50);
-
-          this._ctx.closePath();
-
-          this._ctx.fill();
-        }
-
-        q.x += this._speed;
-      }
-    }
-  }]);
-
-  return Heartbeat;
-}(_baseComponent.default);
-
-exports.default = Heartbeat;
-module.exports = exports["default"];
-
-/***/ }),
-
-/***/ "./src/hex-grid.js":
-/*!*************************!*\
-  !*** ./src/hex-grid.js ***!
-  \*************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _baseComponent = _interopRequireDefault(__webpack_require__(/*! ./base-component */ "./src/base-component.js"));
-
-var _color = __webpack_require__(/*! ./color */ "./src/color.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var HexGrid =
-/*#__PURE__*/
-function (_BaseComponent) {
-  _inherits(HexGrid, _BaseComponent);
-
-  function HexGrid(canvas) {
-    var _this;
-
-    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-    _classCallCheck(this, HexGrid);
-
-    var viewWidth = options.viewWidth || 200;
-    var viewHeight = options.viewHeight || 200;
-    _this = _possibleConstructorReturn(this, (HexGrid.__proto__ || Object.getPrototypeOf(HexGrid)).call(this, canvas, options, viewWidth, viewHeight));
-    _this._nodes = [];
-    return _this;
-  }
-
-  _createClass(HexGrid, [{
-    key: "setOptions",
-    value: function setOptions() {
-      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      this._space = options.space || 5;
-      this._radius = options.radius || 20;
-      this._border = options.border || 3;
-    }
-  }, {
-    key: "drawObject",
-    value: function drawObject() {
-      var _this2 = this;
-
-      var s = this._space;
-      var r = this._radius;
-      var w = Math.pow(3, 0.5) * r / 2;
-      this._ctx.lineWidth = this._border;
-      var now = Date.now();
-
-      this._nodes.forEach(function (h) {
-        var xOffset = h.x % 2 === 0 ? s + w : s * 3 / 2 + 2 * w;
-        var y = s + r + (w + s / 2) * Math.pow(3, 0.5) * h.x;
-
-        _this2.drawHex(xOffset + (2 * w + s) * h.y, y, r, h.bgColor, h.borderColor, h.text, h.text.xOffset, h.text.yOffset);
-
-        if (h.blink.on) {
-          var interval = h.blink.interval;
-          var lastCall = h.blink.lastCall;
-
-          if (now - lastCall < interval) {
-            _this2.drawHex(xOffset + (2 * w + s) * h.y, y, r, h.blink.bgColor, h.blink.borderColor, h.blink.text, h.text.xOffset, h.text.yOffset);
-          } else if (now - lastCall < interval * 2) {} else {
-            h.blink.lastCall = now;
-          }
-        }
-      });
-    }
-  }, {
-    key: "drawHex",
-    value: function drawHex(x, y, r, bgColor, lineColor, text, xOffset, yOffset) {
-      var w = Math.pow(3, 0.5) * r / 2;
-      this._ctx.strokeStyle = lineColor;
-
-      this._ctx.beginPath();
-
-      this._ctx.moveTo(x, y - r);
-
-      this._ctx.lineTo(x + w, y - r / 2);
-
-      this._ctx.lineTo(x + w, y + r / 2);
-
-      this._ctx.lineTo(x, y + r);
-
-      this._ctx.lineTo(x - w, y + r / 2);
-
-      this._ctx.lineTo(x - w, y - r / 2);
-
-      this._ctx.lineTo(x, y - r);
-
-      this._ctx.closePath();
-
-      this._ctx.stroke();
-
-      this._ctx.fillStyle = bgColor;
-
-      this._ctx.fill();
-
-      this._shape.fillText(text.value, x + xOffset, y + yOffset, text.font, 'center', text.color);
-    }
-    /**
-     * Create or update a hex
-     * @param {object} params
-     */
-
-  }, {
-    key: "saveHex",
-    value: function saveHex() {
-      var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      var text = params.text || {};
-      var node = {
-        id: params.id,
-        x: params.x,
-        y: params.y,
-        bgColor: params.bgColor || _color.COLOR.white,
-        borderColor: params.borderColor || _color.COLOR.white,
-        text: {
-          value: text.value || '',
-          color: text.color || _color.COLOR.black,
-          font: text.font || '12px Arial',
-          xOffset: text.xOffset || 0,
-          yOffset: text.yOffset || 0
-        },
-        blink: {
-          text: {
-            value: '',
-            color: _color.COLOR.black
-          },
-          borderColor: params.borderColor || _color.COLOR.white,
-          bgColor: _color.COLOR.red,
-          interval: 1000,
-          on: false,
-          lastCall: 0
-        }
-      };
-      var isExist = false;
-
-      for (var i = 0; i < this._nodes.length; i++) {
-        if (this._nodes[i].id === node.id) {
-          this._nodes[i] = node;
-          isExist = true;
-          break;
-        }
-      }
-
-      if (!isExist) {
-        this._nodes.push(node);
-      }
-    }
-    /**
-     * Blink on
-     * @param {object} params
-     */
-
-  }, {
-    key: "blinkOn",
-    value: function blinkOn() {
-      var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      var text = params.text || {};
-
-      for (var i = 0; i < this._nodes.length; i++) {
-        if (this._nodes[i].id === params.id) {
-          this._nodes[i].blink.text.value = text.value || '';
-          this._nodes[i].blink.text.color = text.color || _color.COLOR.black;
-          this._nodes[i].blink.borderColor = params.borderColor || _color.COLOR.white;
-          this._nodes[i].blink.bgColor = params.bgColor || _color.COLOR.red;
-          this._nodes[i].blink.interval = params.interval || 1000;
-          this._nodes[i].blink.on = true;
-          break;
-        }
-      }
-    }
-    /**
-     * Blink off
-     * @param {string} id
-     */
-
-  }, {
-    key: "blinkOff",
-    value: function blinkOff(id) {
-      for (var i = 0; i < this._nodes.length; i++) {
-        if (this._nodes[i].id === id) {
-          this._nodes[i].blink.on = false;
-          break;
-        }
-      }
-    }
-  }]);
-
-  return HexGrid;
-}(_baseComponent.default);
-
-exports.default = HexGrid;
-module.exports = exports["default"];
-
-/***/ }),
-
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Settings", {
-  enumerable: true,
-  get: function get() {
-    return _settings.default;
-  }
-});
-Object.defineProperty(exports, "BarMeter", {
-  enumerable: true,
-  get: function get() {
-    return _barMeter.default;
-  }
-});
-Object.defineProperty(exports, "DigitalClock", {
-  enumerable: true,
-  get: function get() {
-    return _digitalClock.default;
-  }
-});
-Object.defineProperty(exports, "RoundFan", {
-  enumerable: true,
-  get: function get() {
-    return _roundFan.default;
-  }
-});
-Object.defineProperty(exports, "VolumeMeter", {
-  enumerable: true,
-  get: function get() {
-    return _volumeMeter.default;
-  }
-});
-Object.defineProperty(exports, "Heartbeat", {
-  enumerable: true,
-  get: function get() {
-    return _heartbeat.default;
-  }
-});
-Object.defineProperty(exports, "MessageQueue", {
-  enumerable: true,
-  get: function get() {
-    return _messageQueue.default;
-  }
-});
-Object.defineProperty(exports, "TextMeter", {
-  enumerable: true,
-  get: function get() {
-    return _textMeter.default;
-  }
-});
-Object.defineProperty(exports, "SpeedCircle", {
-  enumerable: true,
-  get: function get() {
-    return _speedCircle.default;
-  }
-});
-Object.defineProperty(exports, "TextBox", {
-  enumerable: true,
-  get: function get() {
-    return _textBox.default;
-  }
-});
-Object.defineProperty(exports, "NetworkGraph", {
-  enumerable: true,
-  get: function get() {
-    return _networkGraph.default;
-  }
-});
-Object.defineProperty(exports, "HexGrid", {
-  enumerable: true,
-  get: function get() {
-    return _hexGrid.default;
-  }
-});
-Object.defineProperty(exports, "ScoreBoard", {
-  enumerable: true,
-  get: function get() {
-    return _scoreBoard.default;
-  }
-});
-
-var _animationTimer = _interopRequireDefault(__webpack_require__(/*! ./animation-timer */ "./src/animation-timer.js"));
-
-var _settings = _interopRequireDefault(__webpack_require__(/*! ./settings */ "./src/settings.js"));
-
-var _barMeter = _interopRequireDefault(__webpack_require__(/*! ./bar-meter */ "./src/bar-meter.js"));
-
-var _digitalClock = _interopRequireDefault(__webpack_require__(/*! ./digital-clock */ "./src/digital-clock.js"));
-
-var _roundFan = _interopRequireDefault(__webpack_require__(/*! ./round-fan */ "./src/round-fan.js"));
-
-var _volumeMeter = _interopRequireDefault(__webpack_require__(/*! ./volume-meter */ "./src/volume-meter.js"));
-
-var _heartbeat = _interopRequireDefault(__webpack_require__(/*! ./heartbeat */ "./src/heartbeat.js"));
-
-var _messageQueue = _interopRequireDefault(__webpack_require__(/*! ./message-queue */ "./src/message-queue.js"));
-
-var _textMeter = _interopRequireDefault(__webpack_require__(/*! ./text-meter */ "./src/text-meter.js"));
-
-var _speedCircle = _interopRequireDefault(__webpack_require__(/*! ./speed-circle */ "./src/speed-circle.js"));
-
-var _textBox = _interopRequireDefault(__webpack_require__(/*! ./text-box */ "./src/text-box.js"));
-
-var _networkGraph = _interopRequireDefault(__webpack_require__(/*! ./network-graph */ "./src/network-graph.js"));
-
-var _hexGrid = _interopRequireDefault(__webpack_require__(/*! ./hex-grid */ "./src/hex-grid.js"));
-
-var _scoreBoard = _interopRequireDefault(__webpack_require__(/*! ./score-board */ "./src/score-board.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Fire up window.requestAnimationFrame()
-_animationTimer.default.render();
-
-/***/ }),
-
-/***/ "./src/message-queue.js":
-/*!******************************!*\
-  !*** ./src/message-queue.js ***!
-  \******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _color = __webpack_require__(/*! ./color */ "./src/color.js");
-
-var _baseComponent = _interopRequireDefault(__webpack_require__(/*! ./base-component */ "./src/base-component.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-/**
- * flexiable width, height
- */
-var MessageQueue =
-/*#__PURE__*/
-function (_BaseComponent) {
-  _inherits(MessageQueue, _BaseComponent);
-
-  function MessageQueue(canvas) {
-    var _this;
-
-    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-    _classCallCheck(this, MessageQueue);
-
-    var viewWidth = options.viewWidth || 100;
-    var viewHeight = options.viewHeight || 200;
-    _this = _possibleConstructorReturn(this, (MessageQueue.__proto__ || Object.getPrototypeOf(MessageQueue)).call(this, canvas, options, viewWidth, viewHeight));
-    _this._queue = [];
-    _this._arcWidth = 10;
-    return _this;
-  }
-
-  _createClass(MessageQueue, [{
-    key: "setOptions",
-    value: function setOptions() {
-      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      this._barHeight = options.barHeight || 20;
-      this._speed = options.speed || 5;
-      this._space = options.space || 5;
-      this._maxQueueCapacity = options.maxQueueCapacity || 20;
-    }
-  }, {
-    key: "drawObject",
-    value: function drawObject() {
-      // Bars can be seen in the view
-      var bars = Math.floor(this._viewHeight / (this._barHeight + this._space));
-      var drawQueueSize = Math.min(this._queue.length, bars);
-
-      for (var i = 0; i < drawQueueSize; i++) {
-        var q = this._queue[i];
-        var currY = (this._barHeight + this._space) * i + this._space; // Move up
-
-        if (currY < q.y) {
-          q.y -= this._speed;
-        } else {
-          q.y = currY;
-        }
-
-        this._shape.fillRect(q.x, q.y, this._viewWidth - 2 * (this._arcWidth + q.space), this._barHeight, q.color);
-
-        this._ctx.beginPath();
-
-        this._ctx.moveTo(q.x, q.y);
-
-        this._ctx.quadraticCurveTo(q.x - this._arcWidth, q.y + this._barHeight / 2, q.x, q.y + this._barHeight);
-
-        this._ctx.fill();
-
-        this._ctx.closePath();
-
-        this._ctx.beginPath();
-
-        this._ctx.moveTo(this._viewWidth - this._arcWidth - q.space, q.y);
-
-        this._ctx.quadraticCurveTo(this._viewWidth - q.space, q.y + this._barHeight / 2, this._viewWidth - this._arcWidth - q.space, q.y + this._barHeight);
-
-        this._ctx.fill();
-
-        this._ctx.closePath();
-      }
-    }
-  }, {
-    key: "push",
-    value: function push() {
-      var param = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      var barColor = param.color || _color.COLOR.blue;
-      var barSpace = param.space || 0;
-
-      if (this._queue.length >= this._maxQueueCapacity) {
-        this.pop();
-      }
-
-      this._queue.push({
-        x: this._arcWidth + barSpace,
-        y: this._viewHeight + this._barHeight,
-        color: barColor,
-        space: barSpace
-      });
-    }
-  }, {
-    key: "pop",
-    value: function pop() {
-      if (this._queue.length > 0) {
-        this._queue.shift();
-      }
-    }
-  }, {
-    key: "queueSize",
-    get: function get() {
-      return this._queue.length;
-    }
-  }]);
-
-  return MessageQueue;
-}(_baseComponent.default);
-
-exports.default = MessageQueue;
-module.exports = exports["default"];
-
-/***/ }),
-
-/***/ "./src/network-graph.js":
-/*!******************************!*\
-  !*** ./src/network-graph.js ***!
-  \******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _baseComponent = _interopRequireDefault(__webpack_require__(/*! ./base-component */ "./src/base-component.js"));
-
-var _utility = _interopRequireDefault(__webpack_require__(/*! ./utility */ "./src/utility.js"));
-
-var _color = __webpack_require__(/*! ./color */ "./src/color.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var NetworkGraph =
-/*#__PURE__*/
-function (_BaseComponent) {
-  _inherits(NetworkGraph, _BaseComponent);
-
-  function NetworkGraph(canvas) {
-    var _this;
-
-    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-    _classCallCheck(this, NetworkGraph);
-
-    var viewWidth = options.viewWidth || 200;
-    var viewHeight = options.viewHeight || 200;
-    _this = _possibleConstructorReturn(this, (NetworkGraph.__proto__ || Object.getPrototypeOf(NetworkGraph)).call(this, canvas, options, viewWidth, viewHeight));
-    _this._signalQueues = [];
-    return _this;
-  }
-
-  _createClass(NetworkGraph, [{
-    key: "setOptions",
-    value: function setOptions() {
-      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      this._nodes = options.nodes || [];
-    }
-  }, {
-    key: "drawObject",
-    value: function drawObject() {
-      var _this2 = this;
-
-      // Draw edges
-      this._nodes.forEach(function (node) {
-        // Neighbors
-        var neighbors = node.neighbors || [];
-        neighbors.forEach(function (neighbor) {
-          var destNode = _this2.getNodeById(neighbor.id); // Edge options
-
-
-          var edge = neighbor.edge || {};
-          var edgeWidth = edge.width || 1;
-          var edgeColor = edge.color || _color.COLOR.grey;
-          var edgeDash = edge.dash || []; // Draw the neighbor and edge
-
-          if (destNode !== null) {
-            if (edgeDash.length !== 0) {
-              _this2._ctx.setLineDash(edgeDash);
-            } else {
-              _this2._ctx.setLineDash([]);
+    moveTo(destX, destY, duration) {
+        let srcX = this._x;
+        let srcY = this._y;
+        // Find last move event.
+        for (let i = (this._eventQueue.length - 1); i >= 0; i--) {
+            const event = this._eventQueue[i];
+            if (event.type === 'move') {
+                srcX = event.destX;
+                srcY = event.destY;
+                break;
             }
-
-            _this2._shape.line(node.x, node.y, destNode.x, destNode.y, edgeWidth, edgeColor);
-          }
+        }
+        // Calculate the speed.
+        const speed = duration / 60;
+        const sX = Math.abs(destX - srcX) / speed;
+        const sY = Math.abs(destY - srcY) / speed;
+        const speedX = destX > srcX ? sX : -sX;
+        const speedY = destY > srcY ? sY : -sY;
+        // Push the movement to the queue.
+        this._eventQueue.push({
+            type: 'move',
+            destX: destX,
+            destY: destY,
+            speedX: speedX,
+            speedY: speedY
         });
-      }); // Draw moving signals
-
-
-      var toDelete = [];
-
-      for (var i = 0; i < this._signalQueues.length; i++) {
-        var signal = this._signalQueues[i];
-        this._signalQueues[i].x = _utility.default.getNextPos(signal.x, signal.destX, signal.speedX);
-        this._signalQueues[i].y = _utility.default.getNextPos(signal.y, signal.destY, signal.speedY);
-
-        if (signal.x === signal.destX && signal.y === signal.destY) {
-          // Append to the deletion queue.
-          toDelete.push(i);
-        } else {
-          this._shape.fillCircle(signal.x, signal.y, signal.size, signal.color);
-        }
-      } // Delete from the signal queue
-
-
-      for (var _i = toDelete.length - 1; _i >= 0; _i--) {
-        this._signalQueues.splice(toDelete[_i], 1);
-      } // Draw nodes
-
-
-      this._nodes.forEach(function (node) {
-        var text = node.text || {};
-        var textValue = text.value || '';
-        var textColor = text.color || _color.COLOR.black;
-        var textFont = text.font || '12px Arial';
-        var xTextOffset = text.xOffset || 0;
-        var yTextOffset = text.yOffset || 0; // Draw the node and text
-
-        _this2._shape.fillCircle(node.x, node.y, node.size, node.color);
-
-        _this2._shape.fillText(textValue, node.x + xTextOffset, node.y + yTextOffset, textFont, 'center', textColor);
-      });
+        return this;
     }
-  }, {
-    key: "getNodeById",
-    value: function getNodeById(nodeId) {
-      return this._nodes.find(function (n) {
-        return n.id === nodeId;
-      });
+    scaleTo(x, y) {
+        this._scaleX = x;
+        this._scaleY = y;
+        this._width = this._scaleX * this._viewWidth;
+        this._height = this._scaleY * this._viewHeight;
+        this._dirty = true;
+        return this;
     }
-    /**
-     * Add nodes
-     * @param {array} nodes
-     */
-
-  }, {
-    key: "addNodes",
-    value: function addNodes() {
-      var _this$_nodes;
-
-      var nodes = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-
-      (_this$_nodes = this._nodes).push.apply(_this$_nodes, _toConsumableArray(nodes));
+    scaleByHeight(height) {
+        this._scaleY = height / this._viewHeight;
+        this._scaleX = this._scaleY;
+        this._width = this._scaleX * this._viewWidth;
+        this._height = this._scaleY * this._viewHeight;
+        // Resize offscreen canvas
+        const dpr = window.devicePixelRatio || 1;
+        this._offscreenCanvas.width = this._width * dpr;
+        this._offscreenCanvas.height = this._height * dpr;
+        this._offscreenCtx.setTransform(1, 0, 0, 1, 0, 0);
+        this._offscreenCtx.scale(dpr * this._scaleX, dpr * this._scaleY);
+        this._staticRendered = false;
+        this._dirty = true;
+        return this;
     }
-    /**
-     * Add a neighbor to a node
-     * @param {string} from
-     * @param {object} neighbor
-     */
-
-  }, {
-    key: "addNeighbor",
-    value: function addNeighbor(from) {
-      var neighbor = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-      for (var i = 0; i < this._nodes.length; i++) {
-        if (this._nodes[i].id === from) {
-          this._nodes[i].neighbors = this._nodes[i].neighbors || [];
-
-          this._nodes[i].neighbors.push(neighbor);
-
-          break;
-        }
-      }
+    show() {
+        this._display = true;
+        this._dirty = true;
     }
-    /**
-     * Send a signal from source node to destination node
-     * @param {object} params
-     * @property {string} params.from
-     * @property {string} params.to
-     * @property {string} params.color
-     * @property {number} params.duration
-     * @property {number} params.size
-     */
-
-  }, {
-    key: "signal",
-    value: function signal() {
-      var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      var color = params.color || _color.COLOR.black;
-      var duration = params.duration || 2000;
-      var size = params.size || 3;
-      var srcNode = this.getNodeById(params.from);
-      var destNode = this.getNodeById(params.to);
-      var sX = Math.abs(destNode.x - srcNode.x) / (duration / 60);
-      var sY = Math.abs(destNode.y - srcNode.y) / (duration / 60);
-      var speedX = destNode.x > srcNode.x ? sX : -sX;
-      var speedY = destNode.y > srcNode.y ? sY : -sY;
-
-      this._signalQueues.push({
-        x: srcNode.x,
-        y: srcNode.y,
-        destX: destNode.x,
-        destY: destNode.y,
-        speedX: speedX,
-        speedY: speedY,
-        color: color,
-        size: size
-      });
+    hide() {
+        this._display = false;
     }
-  }, {
-    key: "nodes",
-    get: function get() {
-      return this._nodes;
+    isDisplay() {
+        return this._display;
     }
-  }]);
-
-  return NetworkGraph;
-}(_baseComponent.default);
-
-exports.default = NetworkGraph;
-module.exports = exports["default"];
-
-/***/ }),
-
-/***/ "./src/round-fan.js":
-/*!**************************!*\
-  !*** ./src/round-fan.js ***!
-  \**************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _color = __webpack_require__(/*! ./color */ "./src/color.js");
-
-var _utility = _interopRequireDefault(__webpack_require__(/*! ./utility */ "./src/utility.js"));
-
-var _baseComponent = _interopRequireDefault(__webpack_require__(/*! ./base-component */ "./src/base-component.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var RoundFan =
-/*#__PURE__*/
-function (_BaseComponent) {
-  _inherits(RoundFan, _BaseComponent);
-
-  function RoundFan(canvas, options) {
-    var _this;
-
-    _classCallCheck(this, RoundFan);
-
-    _this = _possibleConstructorReturn(this, (RoundFan.__proto__ || Object.getPrototypeOf(RoundFan)).call(this, canvas, options, 200, 200));
-    _this._degree = 0;
-    return _this;
-  }
-
-  _createClass(RoundFan, [{
-    key: "setOptions",
-    value: function setOptions() {
-      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      var center = options.center || {};
-      this.fanColor = options.fanColor || _color.COLOR.green;
-      this.centerColor = center.color || _color.COLOR.green;
-      this.centerBgColor = center.bgColor || _color.COLOR.white;
-      this.speed = options.speed || 1;
+    get canvas() {
+        return this._canvas;
     }
-  }, {
-    key: "drawObject",
-    value: function drawObject() {
-      this._degree = _utility.default.getNextAngleByDegree(this._degree, this.speed);
-
-      var angle = _utility.default.getAngleByDegree(this._degree);
-
-      this._ctx.translate(100, 100);
-
-      this._ctx.rotate(angle);
-
-      this._ctx.beginPath();
-
-      this._ctx.moveTo(0, 0); // Up
-
-
-      this._ctx.quadraticCurveTo(-60, -80, 0, -90);
-
-      this._ctx.quadraticCurveTo(80, -100, 0, 0); // Right
-
-
-      this._ctx.quadraticCurveTo(80, -60, 90, 0);
-
-      this._ctx.quadraticCurveTo(100, 80, 0, 0); // Down
-
-
-      this._ctx.quadraticCurveTo(60, 80, 0, 90);
-
-      this._ctx.quadraticCurveTo(-80, 100, 0, 0); // Left
-
-
-      this._ctx.quadraticCurveTo(-80, 60, -90, 0);
-
-      this._ctx.quadraticCurveTo(-100, -80, 0, 0);
-
-      this._ctx.fillStyle = this.fanColor;
-
-      this._ctx.fill();
-
-      this._ctx.closePath();
-
-      this._shape.fillCircle(0, 0, 35, this.centerBgColor);
-
-      this._shape.fillCircle(0, 0, 30, this.centerColor);
-
-      this._shape.fillCircle(0, 0, 10, this.centerBgColor);
+    get context() {
+        return this._ctx;
     }
-  }]);
-
-  return RoundFan;
-}(_baseComponent.default);
-
-exports.default = RoundFan;
-module.exports = exports["default"];
-
-/***/ }),
-
-/***/ "./src/score-board.js":
-/*!****************************!*\
-  !*** ./src/score-board.js ***!
-  \****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _baseComponent = _interopRequireDefault(__webpack_require__(/*! ./base-component */ "./src/base-component.js"));
-
-var _utility = _interopRequireDefault(__webpack_require__(/*! ./utility */ "./src/utility.js"));
-
-var _color = __webpack_require__(/*! ./color */ "./src/color.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var ScoreBoard =
-/*#__PURE__*/
-function (_BaseComponent) {
-  _inherits(ScoreBoard, _BaseComponent);
-
-  function ScoreBoard(canvas) {
-    var _this;
-
-    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-    _classCallCheck(this, ScoreBoard);
-
-    var viewWidth = options.viewWidth || 200;
-    var viewHeight = options.viewHeight || 200;
-    _this = _possibleConstructorReturn(this, (ScoreBoard.__proto__ || Object.getPrototypeOf(ScoreBoard)).call(this, canvas, options, viewWidth, viewHeight));
-    _this._rows = [];
-    return _this;
-  }
-
-  _createClass(ScoreBoard, [{
-    key: "setOptions",
-    value: function setOptions() {
-      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      this._rowHeight = options.rowHeight || 20;
-      this._space = options.space || 0;
-      this._font = options.font || '10px Arial';
-      this._speed = options.speed || 5;
-      this._order = options.order || 'asc';
+    get eventQueue() {
+        return this._eventQueue;
     }
-  }, {
-    key: "sort",
-    value: function sort() {
-      if (this._order === 'asc') {
-        this._rows.sort(function (a, b) {
-          return a.score - b.score;
-        });
-      } else {
-        this._rows.sort(function (a, b) {
-          return b.score - a.score;
-        });
-      }
+    get viewWidth() {
+        return this._viewWidth;
     }
-  }, {
-    key: "drawObject",
-    value: function drawObject() {
-      for (var i = 0; i < this._rows.length; i++) {
-        var row = this._rows[i];
-
-        this._shape.fillRect(row.x, row.y, this._viewWidth, this._rowHeight, row.bgColor);
-
-        this._shape.fillText(row.text.value, row.x + row.text.xOffset, row.y + row.text.yOffset, this._font, 'left', row.text.color);
-
-        if (row.moveType === 'move') {
-          var destY = i * (this._rowHeight + this._space);
-          var speedY = destY > row.y ? this._speed : -this._speed;
-          this._rows[i].y = _utility.default.getNextPos(row.y, destY, speedY);
-        } else if (row.moveType === 'remove') {
-          if (row.destX < 0 && row.x === row.destX) {
-            this._rows[i].speedX = this._speed * 2;
-            this._rows[i].destX = this._viewWidth + 10;
-          }
-
-          this._rows[i].x = _utility.default.getNextPos(row.x, this._rows[i].destX, this._rows[i].speedX);
-        }
-      } // Delete the row.
-
-
-      for (var _i = this._rows.length - 1; _i >= 0; _i--) {
-        var _row = this._rows[_i];
-
-        if (_row.moveType === 'remove' && _row.destX > 0 && _row.x === _row.destX) {
-          this._rows.splice(_i, 1);
-        }
-      }
+    get viewHeight() {
+        return this._viewHeight;
     }
-  }, {
-    key: "update",
-    value: function update() {
-      var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      var id = params.id;
-      var text = params.text || {};
-      var isSort = false;
-
-      for (var i = 0; i < this._rows.length; i++) {
-        if (this._rows[i].id === id) {
-          if (this._rows[i].score !== params.score) {
-            isSort = true;
-          }
-
-          this._rows[i].moveType = 'move';
-          this._rows[i].score = params.score || this._rows[i].score;
-          this._rows[i].bgColor = params.bgColor || this._rows[i].bgColor;
-          this._rows[i].text.value = text.value || this._rows[i].text.value;
-          this._rows[i].text.color = text.color || this._rows[i].text.color;
-          break;
-        }
-      }
-
-      if (isSort) {
-        this.sort();
-      }
-    }
-  }, {
-    key: "remove",
-    value: function remove(id) {
-      var isFound = false;
-
-      for (var i = 0; i < this._rows.length; i++) {
-        if (this._rows[i].id === id && this._rows[i].moveType !== 'remove') {
-          this._rows[i].moveType = 'remove';
-          this._rows[i].speedX = -this._speed;
-          this._rows[i].destX = -40;
-          isFound = true;
-          break;
-        }
-      }
-
-      if (isFound) {
-        this.sort();
-      }
-    }
-  }, {
-    key: "add",
-    value: function add() {
-      var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-      for (var i = 0; i < this._rows.length; i++) {
-        if (this._rows.id === params.id) {
-          return;
-        }
-      }
-
-      var text = params.text || {};
-      var row = {
-        id: params.id,
-        score: params.score || 0,
-        bgColor: params.bgColor || _color.COLOR.blue,
-        text: {
-          value: text.value || '',
-          color: text.color || _color.COLOR.white,
-          xOffset: text.xOffset || 0,
-          yOffset: text.yOffset || 0
-        }
-      };
-      row.x = 0;
-      row.y = 0;
-      row.destX = 0;
-      row.destY = 0;
-      row.speedX = 0;
-      row.speedY = 0;
-      row.moveType = 'move';
-
-      this._rows.push(row);
-
-      this.sort();
-    }
-  }, {
-    key: "rows",
-    get: function get() {
-      return this._rows;
-    }
-  }]);
-
-  return ScoreBoard;
-}(_baseComponent.default);
-
-exports.default = ScoreBoard;
-module.exports = exports["default"];
-
-/***/ }),
-
-/***/ "./src/settings.js":
-/*!*************************!*\
-  !*** ./src/settings.js ***!
-  \*************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
+}
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
+/***/ },
 
-var _animationTimer = _interopRequireDefault(__webpack_require__(/*! ./animation-timer */ "./src/animation-timer.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var Settings =
-/*#__PURE__*/
-function () {
-  function Settings() {
-    _classCallCheck(this, Settings);
-
-    this._fps = 60;
-  }
-
-  _createClass(Settings, [{
-    key: "fps",
-    set: function set(fps) {
-      this._fps = fps;
-
-      _animationTimer.default.setFps(fps);
-    },
-    get: function get() {
-      return this._fps;
-    }
-  }]);
-
-  return Settings;
-}();
-
-var _default = new Settings();
-
-exports.default = _default;
-module.exports = exports["default"];
-
-/***/ }),
-
-/***/ "./src/shape.js":
+/***/ "./src/color.ts"
 /*!**********************!*\
-  !*** ./src/shape.js ***!
+  !*** ./src/color.ts ***!
   \**********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   COLOR: () => (/* binding */ COLOR)
+/* harmony export */ });
+/* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./theme */ "./src/theme.ts");
 
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
+const COLOR = new Proxy({}, {
+    get: (_target, prop) => {
+        return _theme__WEBPACK_IMPORTED_MODULE_0__.ThemeManager.getInstance().theme[prop];
+    }
 });
-exports.default = void 0;
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var Shape =
-/*#__PURE__*/
-function () {
-  /**
-   * @constructor
-   * @param {object} ctx contect from canvas.getContext('2d')
-   */
-  function Shape(ctx) {
-    _classCallCheck(this, Shape);
-
-    this._ctx = ctx;
-  }
-  /**
-   * Create a filled rectangle
-   * @param {number} x1
-   * @param {number} y1
-   * @param {number} x2
-   * @param {number} y2
-   * @param {string} fillStyle
-   */
 
 
-  _createClass(Shape, [{
-    key: "fillRect",
-    value: function fillRect(x1, y1, x2, y2, fillStyle) {
-      this._ctx.beginPath();
+/***/ },
 
-      this._ctx.fillStyle = fillStyle;
+/***/ "./src/digital-clock.ts"
+/*!******************************!*\
+  !*** ./src/digital-clock.ts ***!
+  \******************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-      this._ctx.fillRect(x1, y1, x2, y2);
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ DigitalClock)
+/* harmony export */ });
+/* harmony import */ var _utility__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utility */ "./src/utility.ts");
+/* harmony import */ var _color__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./color */ "./src/color.ts");
+/* harmony import */ var _base_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./base-component */ "./src/base-component.ts");
+/* harmony import */ var _digital_symbol__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./digital-symbol */ "./src/digital-symbol.ts");
 
-      this._ctx.closePath();
+
+
+
+class DigitalClock extends _base_component__WEBPACK_IMPORTED_MODULE_2__["default"] {
+    constructor(canvas, options = {}) {
+        super(canvas, options, 400, 100);
+        this._barWidth = 8;
+        this._space = 12;
+        this._numberWidth = 50;
+        this._numberHeight = 100;
+        this._timer = null;
+        this._ds = new _digital_symbol__WEBPACK_IMPORTED_MODULE_3__["default"](this._ctx, this._barWidth, this._numberWidth, this._numberHeight, this._dashColor, this._numberColor);
+    }
+    postConstructor() {
+        super.postConstructor();
+        this.tick();
+    }
+    setOptions(options = {}) {
+        this._numberColor = options.numberColor || (this.theme ? this.theme.red : _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.red);
+        this._dashColor = options.dashColor || (this.theme ? this.theme.lightGrey : _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.lightGrey);
+        this._hourOffset = options.hourOffset || 0;
+    }
+    destroy() {
+        this.stopTick();
+        super.destroy();
+    }
+    tick() {
+        if (this._timer == null) {
+            this._timer = setInterval(() => {
+                this.drawTime();
+            }, 1000);
+        }
+    }
+    stopTick() {
+        if (this._timer != null) {
+            clearInterval(this._timer);
+            this._timer = null;
+        }
+    }
+    isAnimating() {
+        return true;
+    }
+    drawTime() {
+        const now = _utility__WEBPACK_IMPORTED_MODULE_0__["default"].addHour(this._hourOffset);
+        this.clear();
+        this.save();
+        this.drawTwoDigits(this._ds, now.getHours(), this._numberWidth + this._space);
+        this._ds.drawColon();
+        this._ctx.translate(this._barWidth + this._space, 0);
+        this.drawTwoDigits(this._ds, now.getMinutes(), this._numberWidth + this._space);
+        this._ds.drawColon();
+        this._ctx.translate(this._barWidth + this._space, 0);
+        this.drawTwoDigits(this._ds, now.getSeconds(), this._numberWidth + this._space);
+        this._ctx.restore();
+        this._dirty = true;
+    }
+    drawTwoDigits(digitalNumber, time, space) {
+        if (time < 10) {
+            digitalNumber.drawNumber(0);
+            this._ctx.translate(space, 0);
+            digitalNumber.drawNumber(time);
+            this._ctx.translate(space, 0);
+        }
+        else {
+            const left = Math.floor(time / 10);
+            const right = time % 10;
+            digitalNumber.drawNumber(left);
+            this._ctx.translate(space, 0);
+            digitalNumber.drawNumber(right);
+            this._ctx.translate(space, 0);
+        }
+    }
+}
+
+
+/***/ },
+
+/***/ "./src/digital-symbol.ts"
+/*!*******************************!*\
+  !*** ./src/digital-symbol.ts ***!
+  \*******************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ DigitalSymbol)
+/* harmony export */ });
+class DigitalSymbol {
+    constructor(ctx, barWidth, numberWidth, numberHeight, dashColor, numberColor) {
+        this._ctx = ctx;
+        this._barWidth = barWidth;
+        this._verBarHeight = (numberHeight - 3 * barWidth) / 2;
+        this._horBarHeight = numberWidth - 2 * barWidth;
+        this._dashColor = dashColor;
+        this._numberColor = numberColor;
+    }
+    drawColon() {
+        this._ctx.beginPath();
+        this._ctx.fillStyle = this._numberColor;
+        this._ctx.fillRect(0, (this._verBarHeight * 2 + this._barWidth) / 3, this._barWidth, this._barWidth);
+        this._ctx.fillRect(0, (this._verBarHeight * 2 + this._barWidth) / 3 * 2 + this._barWidth, this._barWidth, this._barWidth);
+        this._ctx.closePath();
+    }
+    drawEmpty() {
+        this._ctx.beginPath();
+        this._ctx.fillStyle = this._dashColor;
+        this._ctx.moveTo(0, 0);
+        this.topLeft();
+        this.bottomLeft();
+        this.topRight();
+        this.bottomRight();
+        this.top();
+        this.middle();
+        this.bottom();
+        this._ctx.closePath();
+    }
+    // Vertical: top left
+    topLeft() {
+        this._ctx.fillRect(0, this._barWidth, this._barWidth, this._verBarHeight);
+    }
+    // Vertical: bottom left
+    bottomLeft() {
+        this._ctx.fillRect(0, this._barWidth * 2 + this._verBarHeight, this._barWidth, this._verBarHeight);
+    }
+    // Vertial: top right
+    topRight() {
+        this._ctx.fillRect(this._barWidth + this._horBarHeight, this._barWidth, this._barWidth, this._verBarHeight);
+    }
+    // Vertial: bottom right
+    bottomRight() {
+        this._ctx.fillRect(this._barWidth + this._horBarHeight, this._barWidth * 2 + this._verBarHeight, this._barWidth, this._verBarHeight);
+    }
+    // Horizontal: top
+    top() {
+        this._ctx.fillRect(this._barWidth, 0, this._horBarHeight, this._barWidth);
+    }
+    // Horizontal: middle
+    middle() {
+        this._ctx.fillRect(this._barWidth, this._barWidth + this._verBarHeight, this._horBarHeight, this._barWidth);
+    }
+    // Horizontal: bottom
+    bottom() {
+        this._ctx.fillRect(this._barWidth, this._barWidth * 2 + this._verBarHeight * 2, this._horBarHeight, this._barWidth);
+    }
+    drawNumber(number) {
+        this.drawEmpty();
+        this._ctx.beginPath();
+        this._ctx.fillStyle = this._numberColor;
+        switch (number) {
+            case 0:
+                this.top();
+                this.bottom();
+                this.topLeft();
+                this.topRight();
+                this.bottomLeft();
+                this.bottomRight();
+                break;
+            case 1:
+                this.topRight();
+                this.bottomRight();
+                break;
+            case 2:
+                this.top();
+                this.topRight();
+                this.middle();
+                this.bottomLeft();
+                this.bottom();
+                break;
+            case 3:
+                this.top();
+                this.middle();
+                this.bottom();
+                this.topRight();
+                this.bottomRight();
+                break;
+            case 4:
+                this.middle();
+                this.topLeft();
+                this.topRight();
+                this.bottomRight();
+                break;
+            case 5:
+                this.top();
+                this.middle();
+                this.bottom();
+                this.topLeft();
+                this.bottomRight();
+                break;
+            case 6:
+                this.top();
+                this.middle();
+                this.bottom();
+                this.topLeft();
+                this.bottomLeft();
+                this.bottomRight();
+                break;
+            case 7:
+                this.top();
+                this.topRight();
+                this.bottomRight();
+                break;
+            case 8:
+                this.topLeft();
+                this.bottomLeft();
+                this.topRight();
+                this.bottomRight();
+                this.top();
+                this.middle();
+                this.bottom();
+                break;
+            case 9:
+                this.top();
+                this.middle();
+                this.topLeft();
+                this.topRight();
+                this.bottomRight();
+                break;
+        }
+        this._ctx.closePath();
+    }
+}
+
+
+/***/ },
+
+/***/ "./src/global.ts"
+/*!***********************!*\
+  !*** ./src/global.ts ***!
+  \***********************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   GLOBAL: () => (/* binding */ GLOBAL)
+/* harmony export */ });
+const GLOBAL = {
+    requestAnimationFrameArray: []
+};
+
+
+
+/***/ },
+
+/***/ "./src/heartbeat.ts"
+/*!**************************!*\
+  !*** ./src/heartbeat.ts ***!
+  \**************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Heartbeat)
+/* harmony export */ });
+/* harmony import */ var _utility__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utility */ "./src/utility.ts");
+/* harmony import */ var _color__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./color */ "./src/color.ts");
+/* harmony import */ var _base_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./base-component */ "./src/base-component.ts");
+
+
+
+class Heartbeat extends _base_component__WEBPACK_IMPORTED_MODULE_2__["default"] {
+    constructor(canvas, options = {}) {
+        const viewWidth = options.viewWidth || 200;
+        super(canvas, options, viewWidth, 100);
+        this._queue = [];
+        this._lastSec = 0;
+        this._timer = null;
+        this._speed = 2;
+        this._fontColor = _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.black;
+        this._maxQueueCapacity = 30;
+        this.drawSeconds();
+    }
+    setOptions(options = {}) {
+        this._speed = options.speed || 2;
+        this._fontColor = options.fontColor || (this.theme ? this.theme.black : _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.black);
+        this._maxQueueCapacity = options.maxQueueCapacity || 30;
+    }
+    postConstructor() {
+        super.postConstructor();
+        // Start drawing the seconds
+        this.tick();
+    }
+    destroy() {
+        if (this._timer != null) {
+            clearInterval(this._timer);
+        }
+        super.destroy();
+    }
+    beat(params = {}) {
+        const beatColor = params.color || (this.theme ? this.theme.green : _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.green);
+        const beatSpace = params.space || 0;
+        if (this._queue.length >= this._maxQueueCapacity) {
+            this._queue.shift();
+        }
+        this._queue.push({
+            time: null,
+            x: -30,
+            color: beatColor,
+            space: beatSpace
+        });
+        this._dirty = true;
+    }
+    tick() {
+        if (this._timer == null) {
+            this._timer = setInterval(() => {
+                this.drawSeconds();
+            }, 1000);
+        }
+    }
+    drawSeconds() {
+        if (this._queue.length >= this._maxQueueCapacity) {
+            this._queue.shift();
+        }
+        const now = new Date();
+        const currSec = _utility__WEBPACK_IMPORTED_MODULE_0__["default"].leftPadZero(now.getMinutes()) + ':' + _utility__WEBPACK_IMPORTED_MODULE_0__["default"].leftPadZero(now.getSeconds());
+        if (currSec !== this._lastSec) {
+            this._queue.push({ time: currSec, x: -30 });
+            this._lastSec = currSec;
+            this._dirty = true;
+        }
+    }
+    isAnimating() {
+        return this._queue.length > 0;
+    }
+    drawObject() {
+        this._ctx.textAlign = 'center';
+        this._ctx.font = '12px Arial';
+        // Draw the horizontal line
+        this._shape.fillRect(0, 50, this._viewWidth, 2, this._fontColor);
+        // Draw the pulse
+        for (let i = 0; i < this._queue.length; i++) {
+            const q = this._queue[i];
+            if (q.time != null) {
+                this._ctx.fillStyle = this._fontColor;
+                this._ctx.fillText(q.time, q.x, 90);
+                this._shape.fillRect(q.x - 1, 45, 2, 12, this._fontColor);
+            }
+            else {
+                this._ctx.fillStyle = q.color || this._fontColor;
+                this._ctx.beginPath();
+                this._ctx.moveTo(q.x - 10, 50);
+                this._ctx.quadraticCurveTo(q.x - 5, -20 + (q.space || 0) * 2, q.x, 50);
+                this._ctx.quadraticCurveTo(q.x + 5, 100 - (q.space || 0) * 1, q.x + 10, 50);
+                this._ctx.closePath();
+                this._ctx.fill();
+            }
+            q.x += this._speed;
+        }
+        if (this._queue.length > 0) {
+            this._dirty = true;
+        }
+    }
+}
+
+
+/***/ },
+
+/***/ "./src/hex-grid.ts"
+/*!*************************!*\
+  !*** ./src/hex-grid.ts ***!
+  \*************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ HexGrid)
+/* harmony export */ });
+/* harmony import */ var _base_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base-component */ "./src/base-component.ts");
+/* harmony import */ var _color__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./color */ "./src/color.ts");
+
+
+class HexGrid extends _base_component__WEBPACK_IMPORTED_MODULE_0__["default"] {
+    constructor(canvas, options = {}) {
+        const viewWidth = options.viewWidth || 200;
+        const viewHeight = options.viewHeight || 200;
+        super(canvas, options, viewWidth, viewHeight);
+        this._nodes = [];
+        this._space = 5;
+        this._radius = 20;
+        this._border = 3;
+    }
+    setOptions(options = {}) {
+        this._space = options.space || 5;
+        this._radius = options.radius || 20;
+        this._border = options.border || 3;
+    }
+    isAnimating() {
+        return this._nodes.some(h => h.blink.on);
+    }
+    drawObject() {
+        // 1. Draw static background from offscreen cache
+        this.drawOffscreen();
+        // 2. Draw only dynamic (blinking) elements
+        const s = this._space;
+        const r = this._radius;
+        const w = Math.pow(3, 0.5) * r / 2;
+        const now = Date.now();
+        let animating = false;
+        this._nodes.forEach((h) => {
+            if (h.blink.on) {
+                animating = true;
+                const interval = h.blink.interval;
+                const lastCall = h.blink.lastCall;
+                if (now - lastCall < interval) {
+                    const xOffset = h.x % 2 === 0 ? s + w : s * 3 / 2 + 2 * w;
+                    const y = (s + r) + (w + s / 2) * Math.pow(3, 0.5) * h.x;
+                    this.drawHex(xOffset + (2 * w + s) * h.y, y, r, h.blink.bgColor, h.blink.borderColor, h.blink.text, h.text.xOffset || 0, h.text.yOffset || 0);
+                }
+                else if (now - lastCall >= (interval * 2)) {
+                    h.blink.lastCall = now;
+                }
+            }
+        });
+        if (animating) {
+            this._dirty = true;
+        }
+    }
+    drawStatic() {
+        const s = this._space;
+        const r = this._radius;
+        const w = Math.pow(3, 0.5) * r / 2;
+        this._offscreenCtx.lineWidth = this._border;
+        this._nodes.forEach((h) => {
+            const xOffset = h.x % 2 === 0 ? s + w : s * 3 / 2 + 2 * w;
+            const y = (s + r) + (w + s / 2) * Math.pow(3, 0.5) * h.x;
+            const x = xOffset + (2 * w + s) * h.y;
+            // Draw to offscreen context
+            this._offscreenCtx.strokeStyle = h.borderColor;
+            this._offscreenCtx.beginPath();
+            this._offscreenCtx.moveTo(x, y - r);
+            this._offscreenCtx.lineTo(x + w, y - r / 2);
+            this._offscreenCtx.lineTo(x + w, y + r / 2);
+            this._offscreenCtx.lineTo(x, y + r);
+            this._offscreenCtx.lineTo(x - w, y + r / 2);
+            this._offscreenCtx.lineTo(x - w, y - r / 2);
+            this._offscreenCtx.lineTo(x, y - r);
+            this._offscreenCtx.closePath();
+            this._offscreenCtx.stroke();
+            this._offscreenCtx.fillStyle = h.bgColor;
+            this._offscreenCtx.fill();
+            // Text to offscreen
+            this._offscreenCtx.beginPath();
+            this._offscreenCtx.font = h.text.font || '12px Arial';
+            this._offscreenCtx.textAlign = 'center';
+            this._offscreenCtx.fillStyle = h.text.color;
+            this._offscreenCtx.fillText(String(h.text.value), x + (h.text.xOffset || 0), y + (h.text.yOffset || 0));
+            this._offscreenCtx.closePath();
+        });
+    }
+    drawHex(x, y, r, bgColor, lineColor, text, xOffset, yOffset) {
+        const w = Math.pow(3, 0.5) * r / 2;
+        this._ctx.strokeStyle = lineColor;
+        this._ctx.beginPath();
+        this._ctx.moveTo(x, y - r);
+        this._ctx.lineTo(x + w, y - r / 2);
+        this._ctx.lineTo(x + w, y + r / 2);
+        this._ctx.lineTo(x, y + r);
+        this._ctx.lineTo(x - w, y + r / 2);
+        this._ctx.lineTo(x - w, y - r / 2);
+        this._ctx.lineTo(x, y - r);
+        this._ctx.closePath();
+        this._ctx.stroke();
+        this._ctx.fillStyle = bgColor;
+        this._ctx.fill();
+        this._shape.fillText(String(text.value), x + xOffset, y + yOffset, text.font || '12px Arial', 'center', text.color);
+    }
+    saveHex(params) {
+        const text = params.text || {};
+        const node = {
+            id: params.id,
+            x: params.x,
+            y: params.y,
+            bgColor: params.bgColor || (this.theme ? this.theme.white : _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.white),
+            borderColor: params.borderColor || (this.theme ? this.theme.white : _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.white),
+            text: {
+                value: text.value !== undefined ? text.value : '',
+                color: text.color || (this.theme ? this.theme.black : _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.black),
+                font: text.font || '12px Arial',
+                xOffset: text.xOffset || 0,
+                yOffset: text.yOffset || 0
+            },
+            blink: {
+                text: {
+                    value: '',
+                    color: (this.theme ? this.theme.black : _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.black)
+                },
+                borderColor: params.borderColor || (this.theme ? this.theme.white : _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.white),
+                bgColor: (this.theme ? this.theme.red : _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.red),
+                interval: 1000,
+                on: false,
+                lastCall: 0
+            }
+        };
+        const index = this._nodes.findIndex(n => n.id === node.id);
+        if (index !== -1) {
+            this._nodes[index] = node;
+        }
+        else {
+            this._nodes.push(node);
+        }
+        this._staticRendered = false;
+        this._dirty = true;
+    }
+    blinkOn(params) {
+        const text = params.text || {};
+        for (let i = 0; i < this._nodes.length; i++) {
+            if (this._nodes[i].id === params.id) {
+                this._nodes[i].blink.text.value = text.value !== undefined ? text.value : '';
+                this._nodes[i].blink.text.color = text.color || (this.theme ? this.theme.black : _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.black);
+                this._nodes[i].blink.borderColor = params.borderColor || (this.theme ? this.theme.white : _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.white);
+                this._nodes[i].blink.bgColor = params.bgColor || (this.theme ? this.theme.red : _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.red);
+                this._nodes[i].blink.interval = params.interval || 1000;
+                this._nodes[i].blink.on = true;
+                this._dirty = true;
+                break;
+            }
+        }
+    }
+    blinkOff(id) {
+        for (let i = 0; i < this._nodes.length; i++) {
+            if (this._nodes[i].id === id) {
+                this._nodes[i].blink.on = false;
+                this._dirty = true;
+                break;
+            }
+        }
+    }
+}
+
+
+/***/ },
+
+/***/ "./src/message-queue.ts"
+/*!******************************!*\
+  !*** ./src/message-queue.ts ***!
+  \******************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ MessageQueue)
+/* harmony export */ });
+/* harmony import */ var _color__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./color */ "./src/color.ts");
+/* harmony import */ var _base_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./base-component */ "./src/base-component.ts");
+
+
+class MessageQueue extends _base_component__WEBPACK_IMPORTED_MODULE_1__["default"] {
+    constructor(canvas, options = {}) {
+        const viewWidth = options.viewWidth || 100;
+        const viewHeight = options.viewHeight || 200;
+        super(canvas, options, viewWidth, viewHeight);
+        this._queue = [];
+        this._arcWidth = 10;
+    }
+    setOptions(options = {}) {
+        this._barHeight = options.barHeight || 20;
+        this._speed = options.speed || 5;
+        this._space = options.space || 5;
+        this._maxQueueCapacity = options.maxQueueCapacity !== undefined ? options.maxQueueCapacity : 20;
+    }
+    isAnimating() {
+        const bars = Math.floor(this._viewHeight / (this._barHeight + this._space));
+        const drawQueueSize = Math.min(this._queue.length, bars);
+        for (let i = 0; i < drawQueueSize; i++) {
+            const q = this._queue[i];
+            const currY = (this._barHeight + this._space) * i + this._space;
+            if (currY < q.y) {
+                return true;
+            }
+        }
+        return false;
+    }
+    drawObject() {
+        // Bars can be seen in the view
+        const bars = Math.floor(this._viewHeight / (this._barHeight + this._space));
+        const drawQueueSize = Math.min(this._queue.length, bars);
+        let animating = false;
+        for (let i = 0; i < drawQueueSize; i++) {
+            const q = this._queue[i];
+            const currY = (this._barHeight + this._space) * i + this._space;
+            // Move up
+            if (currY < q.y) {
+                q.y -= this._speed;
+                animating = true;
+            }
+            else {
+                q.y = currY;
+            }
+            this._ctx.fillStyle = q.color;
+            this._shape.fillRect(q.x, q.y, this._viewWidth - 2 * (this._arcWidth + q.space), this._barHeight, q.color);
+            this._ctx.beginPath();
+            this._ctx.moveTo(q.x, q.y);
+            this._ctx.quadraticCurveTo(q.x - this._arcWidth, q.y + this._barHeight / 2, q.x, q.y + this._barHeight);
+            this._ctx.fill();
+            this._ctx.closePath();
+            this._ctx.beginPath();
+            this._ctx.moveTo(this._viewWidth - this._arcWidth - q.space, q.y);
+            this._ctx.quadraticCurveTo(this._viewWidth - q.space, q.y + this._barHeight / 2, this._viewWidth - this._arcWidth - q.space, q.y + this._barHeight);
+            this._ctx.fill();
+            this._ctx.closePath();
+        }
+        if (animating) {
+            this._dirty = true;
+        }
+        else {
+            this._dirty = false;
+        }
+    }
+    push(param = {}) {
+        const barColor = param.color || (this.theme ? this.theme.blue : _color__WEBPACK_IMPORTED_MODULE_0__.COLOR.blue);
+        const barSpace = param.space || 0;
+        if (this._queue.length >= this._maxQueueCapacity) {
+            this.pop();
+        }
+        this._queue.push({
+            x: this._arcWidth + barSpace,
+            y: this._viewHeight + this._barHeight,
+            color: barColor,
+            space: barSpace
+        });
+        this._dirty = true;
+    }
+    pop() {
+        if (this._queue.length > 0) {
+            this._queue.shift();
+            this._dirty = true;
+        }
+    }
+    get queueSize() {
+        return this._queue.length;
+    }
+}
+
+
+/***/ },
+
+/***/ "./src/network-graph.ts"
+/*!******************************!*\
+  !*** ./src/network-graph.ts ***!
+  \******************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ NetworkGraph)
+/* harmony export */ });
+/* harmony import */ var _base_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base-component */ "./src/base-component.ts");
+/* harmony import */ var _utility__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utility */ "./src/utility.ts");
+/* harmony import */ var _color__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./color */ "./src/color.ts");
+
+
+
+class NetworkGraph extends _base_component__WEBPACK_IMPORTED_MODULE_0__["default"] {
+    constructor(canvas, options = {}) {
+        const viewWidth = options.viewWidth || 200;
+        const viewHeight = options.viewHeight || 200;
+        super(canvas, options, viewWidth, viewHeight);
+        this._nodes = [];
+        this._signalQueues = [];
+    }
+    setOptions(options = {}) {
+        this._nodes = options.nodes || [];
+    }
+    drawObject() {
+        // 1. Draw static background (nodes and edges)
+        this.drawOffscreen();
+        // 2. Draw moving signals
+        const toDelete = [];
+        let animating = false;
+        for (let i = 0; i < this._signalQueues.length; i++) {
+            const signal = this._signalQueues[i];
+            const oldX = signal.x;
+            const oldY = signal.y;
+            this._signalQueues[i].x = _utility__WEBPACK_IMPORTED_MODULE_1__["default"].getNextPos(signal.x, signal.destX, signal.speedX);
+            this._signalQueues[i].y = _utility__WEBPACK_IMPORTED_MODULE_1__["default"].getNextPos(signal.y, signal.destY, signal.speedY);
+            if (this._signalQueues[i].x === signal.destX && this._signalQueues[i].y === signal.destY) {
+                toDelete.push(i);
+            }
+            else {
+                this._shape.fillCircle(signal.x, signal.y, signal.size, signal.color);
+            }
+            if (this._signalQueues[i].x !== oldX || this._signalQueues[i].y !== oldY) {
+                animating = true;
+            }
+        }
+        // Delete from the signal queue
+        for (let i = toDelete.length - 1; i >= 0; i--) {
+            this._signalQueues.splice(toDelete[i], 1);
+            animating = true;
+        }
+        if (animating) {
+            this._dirty = true;
+        }
+    }
+    drawStatic() {
+        // Draw edges
+        this._nodes.forEach((node) => {
+            const neighbors = node.neighbors || [];
+            neighbors.forEach((neighbor) => {
+                const destNode = this.getNodeById(neighbor.id);
+                if (destNode) {
+                    const edge = neighbor.edge || {};
+                    const edgeWidth = edge.width || 1;
+                    const edgeColor = edge.color || (this.theme ? this.theme.grey : _color__WEBPACK_IMPORTED_MODULE_2__.COLOR.grey);
+                    const edgeDash = edge.dash || [];
+                    this._offscreenCtx.beginPath();
+                    if (edgeDash.length !== 0) {
+                        this._offscreenCtx.setLineDash(edgeDash);
+                    }
+                    else {
+                        this._offscreenCtx.setLineDash([]);
+                    }
+                    this._offscreenCtx.lineWidth = edgeWidth;
+                    this._offscreenCtx.strokeStyle = edgeColor;
+                    this._offscreenCtx.moveTo(node.x, node.y);
+                    this._offscreenCtx.lineTo(destNode.x, destNode.y);
+                    this._offscreenCtx.stroke();
+                    this._offscreenCtx.closePath();
+                }
+            });
+        });
+        // Draw nodes
+        this._nodes.forEach((node) => {
+            const text = node.text || {};
+            const textValue = text.value || '';
+            const textColor = text.color || (this.theme ? this.theme.black : _color__WEBPACK_IMPORTED_MODULE_2__.COLOR.black);
+            const textFont = text.font || '12px Arial';
+            const xTextOffset = text.xOffset || 0;
+            const yTextOffset = text.yOffset || 0;
+            // Node circle to offscreen
+            this._offscreenCtx.beginPath();
+            this._offscreenCtx.fillStyle = node.color;
+            this._offscreenCtx.arc(node.x, node.y, node.size, 0, 2 * Math.PI);
+            this._offscreenCtx.fill();
+            this._offscreenCtx.closePath();
+            // Text to offscreen
+            this._offscreenCtx.beginPath();
+            this._offscreenCtx.font = textFont;
+            this._offscreenCtx.textAlign = 'center';
+            this._offscreenCtx.fillStyle = textColor;
+            this._offscreenCtx.fillText(textValue, node.x + xTextOffset, node.y + yTextOffset);
+            this._offscreenCtx.closePath();
+        });
+    }
+    getNodeById(nodeId) {
+        return this._nodes.find(n => n.id === nodeId);
+    }
+    addNodes(nodes = []) {
+        this._nodes.push(...nodes);
+        this._staticRendered = false;
+        this._dirty = true;
+    }
+    addNeighbor(from, neighbor = { id: '' }) {
+        for (let i = 0; i < this._nodes.length; i++) {
+            if (this._nodes[i].id === from) {
+                this._nodes[i].neighbors = this._nodes[i].neighbors || [];
+                this._nodes[i].neighbors.push(neighbor);
+                break;
+            }
+        }
+        this._staticRendered = false;
+        this._dirty = true;
+    }
+    isAnimating() {
+        return this._signalQueues.length > 0;
+    }
+    signal(params) {
+        const color = params.color || (this.theme ? this.theme.black : _color__WEBPACK_IMPORTED_MODULE_2__.COLOR.black);
+        const duration = params.duration || 2000;
+        const size = params.size || 3;
+        const srcNode = this.getNodeById(params.from);
+        const destNode = this.getNodeById(params.to);
+        if (srcNode && destNode) {
+            const sX = Math.abs(destNode.x - srcNode.x) / (duration / 60);
+            const sY = Math.abs(destNode.y - srcNode.y) / (duration / 60);
+            const speedX = destNode.x > srcNode.x ? sX : -sX;
+            const speedY = destNode.y > srcNode.y ? sY : -sY;
+            this._signalQueues.push({
+                x: srcNode.x,
+                y: srcNode.y,
+                destX: destNode.x,
+                destY: destNode.y,
+                speedX: speedX,
+                speedY: speedY,
+                color: color,
+                size: size
+            });
+            this._dirty = true;
+        }
+    }
+    get nodes() {
+        return this._nodes;
+    }
+}
+
+
+/***/ },
+
+/***/ "./src/round-fan.ts"
+/*!**************************!*\
+  !*** ./src/round-fan.ts ***!
+  \**************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ RoundFan)
+/* harmony export */ });
+/* harmony import */ var _color__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./color */ "./src/color.ts");
+/* harmony import */ var _utility__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utility */ "./src/utility.ts");
+/* harmony import */ var _base_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./base-component */ "./src/base-component.ts");
+
+
+
+class RoundFan extends _base_component__WEBPACK_IMPORTED_MODULE_2__["default"] {
+    constructor(canvas, options = {}) {
+        super(canvas, options, 200, 200);
+        this._degree = 0;
+    }
+    setOptions(options = {}) {
+        const center = options.center || {};
+        this.fanColor = options.fanColor || (this.theme ? this.theme.green : _color__WEBPACK_IMPORTED_MODULE_0__.COLOR.green);
+        this.centerColor = center.color || (this.theme ? this.theme.green : _color__WEBPACK_IMPORTED_MODULE_0__.COLOR.green);
+        this.centerBgColor = center.bgColor || (this.theme ? this.theme.white : _color__WEBPACK_IMPORTED_MODULE_0__.COLOR.white);
+        this.speed = options.speed !== undefined ? options.speed : 1;
+    }
+    isAnimating() {
+        return this.speed !== 0;
+    }
+    drawObject() {
+        this._degree = _utility__WEBPACK_IMPORTED_MODULE_1__["default"].getNextAngleByDegree(this._degree, this.speed);
+        const angle = _utility__WEBPACK_IMPORTED_MODULE_1__["default"].getAngleByDegree(this._degree);
+        this._ctx.translate(100, 100);
+        this._ctx.rotate(angle);
+        this._ctx.beginPath();
+        this._ctx.moveTo(0, 0);
+        // Up
+        this._ctx.quadraticCurveTo(-60, -80, 0, -90);
+        this._ctx.quadraticCurveTo(80, -100, 0, 0);
+        // Right
+        this._ctx.quadraticCurveTo(80, -60, 90, 0);
+        this._ctx.quadraticCurveTo(100, 80, 0, 0);
+        // Down
+        this._ctx.quadraticCurveTo(60, 80, 0, 90);
+        this._ctx.quadraticCurveTo(-80, 100, 0, 0);
+        // Left
+        this._ctx.quadraticCurveTo(-80, 60, -90, 0);
+        this._ctx.quadraticCurveTo(-100, -80, 0, 0);
+        this._ctx.fillStyle = this.fanColor;
+        this._ctx.fill();
+        this._ctx.closePath();
+        this._shape.fillCircle(0, 0, 35, this.centerBgColor);
+        this._shape.fillCircle(0, 0, 30, this.centerColor);
+        this._shape.fillCircle(0, 0, 10, this.centerBgColor);
+        if (this.speed !== 0) {
+            this._dirty = true;
+        }
+    }
+}
+
+
+/***/ },
+
+/***/ "./src/score-board.ts"
+/*!****************************!*\
+  !*** ./src/score-board.ts ***!
+  \****************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ScoreBoard)
+/* harmony export */ });
+/* harmony import */ var _base_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base-component */ "./src/base-component.ts");
+/* harmony import */ var _utility__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utility */ "./src/utility.ts");
+/* harmony import */ var _color__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./color */ "./src/color.ts");
+
+
+
+class ScoreBoard extends _base_component__WEBPACK_IMPORTED_MODULE_0__["default"] {
+    constructor(canvas, options = {}) {
+        const viewWidth = options.viewWidth || 200;
+        const viewHeight = options.viewHeight || 200;
+        super(canvas, options, viewWidth, viewHeight);
+        this._rows = [];
+    }
+    setOptions(options = {}) {
+        this._rowHeight = options.rowHeight || 20;
+        this._space = options.space || 0;
+        this._font = options.font || '10px Arial';
+        this._speed = options.speed || 5;
+        this._order = options.order !== undefined ? options.order : 'asc';
+    }
+    sort() {
+        if (this._order === 'asc') {
+            this._rows.sort((a, b) => a.score - b.score);
+        }
+        else {
+            this._rows.sort((a, b) => b.score - a.score);
+        }
+    }
+    isAnimating() {
+        for (let i = 0; i < this._rows.length; i++) {
+            const row = this._rows[i];
+            if (row.moveType === 'move') {
+                const destY = i * (this._rowHeight + this._space);
+                if (row.y !== destY) {
+                    return true;
+                }
+            }
+            else if (row.moveType === 'remove') {
+                return true;
+            }
+        }
+        return false;
+    }
+    drawObject() {
+        let animating = false;
+        for (let i = 0; i < this._rows.length; i++) {
+            const row = this._rows[i];
+            this._shape.fillRect(row.x, row.y, this._viewWidth, this._rowHeight, row.bgColor);
+            this._shape.fillText(String(row.text.value), row.x + row.text.xOffset, row.y + row.text.yOffset, this._font, 'left', row.text.color);
+            if (row.moveType === 'move') {
+                const destY = i * (this._rowHeight + this._space);
+                if (row.y !== destY) {
+                    const speedY = destY > row.y ? this._speed : -this._speed;
+                    this._rows[i].y = _utility__WEBPACK_IMPORTED_MODULE_1__["default"].getNextPos(row.y, destY, speedY);
+                    animating = true;
+                }
+            }
+            else if (row.moveType === 'remove') {
+                if (row.destX < 0 && row.x === row.destX) {
+                    this._rows[i].speedX = this._speed * 2;
+                    this._rows[i].destX = this._viewWidth + 10;
+                }
+                const oldX = row.x;
+                this._rows[i].x = _utility__WEBPACK_IMPORTED_MODULE_1__["default"].getNextPos(row.x, this._rows[i].destX, this._rows[i].speedX);
+                if (this._rows[i].x !== oldX) {
+                    animating = true;
+                }
+            }
+        }
+        // Delete the row.
+        for (let i = this._rows.length - 1; i >= 0; i--) {
+            const row = this._rows[i];
+            if (row.moveType === 'remove' && row.destX > 0 && row.x === row.destX) {
+                this._rows.splice(i, 1);
+                animating = true;
+            }
+        }
+        if (animating) {
+            this._dirty = true;
+        }
+    }
+    update(params) {
+        const id = params.id;
+        const text = params.text || {};
+        let isSort = false;
+        for (let i = 0; i < this._rows.length; i++) {
+            if (this._rows[i].id === id) {
+                if (params.score !== undefined && this._rows[i].score !== params.score) {
+                    isSort = true;
+                    this._rows[i].score = params.score;
+                }
+                this._rows[i].moveType = 'move';
+                this._rows[i].bgColor = params.bgColor || this._rows[i].bgColor;
+                this._rows[i].text.value = text.value !== undefined ? text.value : this._rows[i].text.value;
+                this._rows[i].text.color = text.color || this._rows[i].text.color;
+                break;
+            }
+        }
+        if (isSort) {
+            this.sort();
+        }
+        this._dirty = true;
+    }
+    remove(id) {
+        let isFound = false;
+        for (let i = 0; i < this._rows.length; i++) {
+            if (this._rows[i].id === id && this._rows[i].moveType !== 'remove') {
+                this._rows[i].moveType = 'remove';
+                this._rows[i].speedX = -this._speed;
+                this._rows[i].destX = -40;
+                isFound = true;
+                break;
+            }
+        }
+        if (isFound) {
+            this.sort();
+        }
+        this._dirty = true;
+    }
+    add(params) {
+        for (let i = 0; i < this._rows.length; i++) {
+            if (this._rows[i].id === params.id) {
+                return;
+            }
+        }
+        const text = params.text || {};
+        const row = {
+            id: params.id,
+            score: params.score || 0,
+            bgColor: params.bgColor || (this.theme ? this.theme.blue : _color__WEBPACK_IMPORTED_MODULE_2__.COLOR.blue),
+            text: {
+                value: text.value !== undefined ? text.value : '',
+                color: text.color || (this.theme ? this.theme.white : _color__WEBPACK_IMPORTED_MODULE_2__.COLOR.white),
+                xOffset: text.xOffset || 0,
+                yOffset: text.yOffset || 0
+            },
+            x: 0,
+            y: this._viewHeight, // Start from bottom
+            destX: 0,
+            destY: 0,
+            speedX: 0,
+            speedY: 0,
+            moveType: 'move'
+        };
+        this._rows.push(row);
+        this.sort();
+        this._dirty = true;
+    }
+    get rows() {
+        return this._rows;
+    }
+}
+
+
+/***/ },
+
+/***/ "./src/settings.ts"
+/*!*************************!*\
+  !*** ./src/settings.ts ***!
+  \*************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _animation_timer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./animation-timer */ "./src/animation-timer.ts");
+
+class Settings {
+    constructor() {
+        this._fps = 60;
+    }
+    set fps(fps) {
+        this._fps = fps;
+        _animation_timer__WEBPACK_IMPORTED_MODULE_0__["default"].setFps(fps);
+    }
+    get fps() {
+        return this._fps;
+    }
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new Settings());
+
+
+/***/ },
+
+/***/ "./src/shape.ts"
+/*!**********************!*\
+  !*** ./src/shape.ts ***!
+  \**********************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Shape)
+/* harmony export */ });
+class Shape {
+    /**
+     * @constructor
+     * @param {CanvasRenderingContext2D} ctx context from canvas.getContext('2d')
+     */
+    constructor(ctx) {
+        this._ctx = ctx;
+    }
+    /**
+     * Create a filled rectangle
+     */
+    fillRect(x1, y1, x2, y2, fillStyle) {
+        this._ctx.beginPath();
+        this._ctx.fillStyle = fillStyle;
+        this._ctx.fillRect(x1, y1, x2, y2);
+        this._ctx.closePath();
     }
     /**
      * Create a filled triangle
-     * @param {number} x1
-     * @param {number} y1
-     * @param {number} x2
-     * @param {number} y2
-     * @param {number} x3
-     * @param {number} y3
-     * @param {string} fillStyle
      */
-
-  }, {
-    key: "fillTriangle",
-    value: function fillTriangle(x1, y1, x2, y2, x3, y3, fillStyle) {
-      this._ctx.beginPath();
-
-      this._ctx.fillStyle = fillStyle;
-
-      this._ctx.moveTo(x1, y1);
-
-      this._ctx.lineTo(x2, y2);
-
-      this._ctx.lineTo(x3, y3);
-
-      this._ctx.fill();
-
-      this._ctx.closePath();
+    fillTriangle(x1, y1, x2, y2, x3, y3, fillStyle) {
+        this._ctx.beginPath();
+        this._ctx.fillStyle = fillStyle;
+        this._ctx.moveTo(x1, y1);
+        this._ctx.lineTo(x2, y2);
+        this._ctx.lineTo(x3, y3);
+        this._ctx.fill();
+        this._ctx.closePath();
     }
     /**
      * Create a filled text
-     * @param {string} text
-     * @param {number} x
-     * @param {number} y
-     * @param {string} font
-     * @param {string} textAlign
-     * @param {string} fillStyle
      */
-
-  }, {
-    key: "fillText",
-    value: function fillText(text, x, y, font, textAlign, fillStyle) {
-      this._ctx.beginPath();
-
-      this._ctx.font = font;
-      this._ctx.textAlign = textAlign;
-      this._ctx.fillStyle = fillStyle;
-
-      this._ctx.fillText(text, x, y);
-
-      this._ctx.closePath();
+    fillText(text, x, y, font, textAlign, fillStyle) {
+        this._ctx.beginPath();
+        this._ctx.font = font;
+        this._ctx.textAlign = textAlign;
+        this._ctx.fillStyle = fillStyle;
+        this._ctx.fillText(text, x, y);
+        this._ctx.closePath();
     }
     /**
      * Create a line
-     * @param {number} x1
-     * @param {number} y1
-     * @param {number} x2
-     * @param {number} y2
-     * @param {number} lineWidth
-     * @param {string} strokeStyle
      */
-
-  }, {
-    key: "line",
-    value: function line(x1, y1, x2, y2, lineWidth, strokeStyle) {
-      this._ctx.beginPath();
-
-      this._ctx.lineWidth = lineWidth;
-      this._ctx.strokeStyle = strokeStyle;
-
-      this._ctx.moveTo(x1, y1);
-
-      this._ctx.lineTo(x2, y2);
-
-      this._ctx.closePath();
-
-      this._ctx.stroke();
+    line(x1, y1, x2, y2, lineWidth, strokeStyle) {
+        this._ctx.beginPath();
+        this._ctx.lineWidth = lineWidth;
+        this._ctx.strokeStyle = strokeStyle;
+        this._ctx.moveTo(x1, y1);
+        this._ctx.lineTo(x2, y2);
+        this._ctx.closePath();
+        this._ctx.stroke();
     }
     /**
      * Create a filled circle
-     * @param {number} x
-     * @param {number} y
-     * @param {number} radius
-     * @param {string} fillStyle
      */
-
-  }, {
-    key: "fillCircle",
-    value: function fillCircle(x, y, radius, fillStyle) {
-      this._ctx.beginPath();
-
-      this._ctx.fillStyle = fillStyle;
-
-      this._ctx.arc(x, y, radius, 0, 2 * Math.PI);
-
-      this._ctx.fill();
-
-      this._ctx.closePath();
+    fillCircle(x, y, radius, fillStyle) {
+        this._ctx.beginPath();
+        this._ctx.fillStyle = fillStyle;
+        this._ctx.arc(x, y, radius, 0, 2 * Math.PI);
+        this._ctx.fill();
+        this._ctx.closePath();
     }
-  }]);
+}
 
-  return Shape;
-}();
 
-exports.default = Shape;
-module.exports = exports["default"];
+/***/ },
 
-/***/ }),
-
-/***/ "./src/speed-circle.js":
+/***/ "./src/speed-circle.ts"
 /*!*****************************!*\
-  !*** ./src/speed-circle.js ***!
+  !*** ./src/speed-circle.ts ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ SpeedCircle)
+/* harmony export */ });
+/* harmony import */ var _utility__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utility */ "./src/utility.ts");
+/* harmony import */ var _base_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./base-component */ "./src/base-component.ts");
+/* harmony import */ var _color__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./color */ "./src/color.ts");
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
 
-var _utility = _interopRequireDefault(__webpack_require__(/*! ./utility */ "./src/utility.js"));
-
-var _baseComponent = _interopRequireDefault(__webpack_require__(/*! ./base-component */ "./src/base-component.js"));
-
-var _color = __webpack_require__(/*! ./color */ "./src/color.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var SpeedCircle =
-/*#__PURE__*/
-function (_BaseComponent) {
-  _inherits(SpeedCircle, _BaseComponent);
-
-  function SpeedCircle(canvas, options) {
-    var _this;
-
-    _classCallCheck(this, SpeedCircle);
-
-    _this = _possibleConstructorReturn(this, (SpeedCircle.__proto__ || Object.getPrototypeOf(SpeedCircle)).call(this, canvas, options, 200, 200));
-    _this._font = '25px Arial';
-    _this._degree1 = 0;
-    _this._degree2 = 0;
-    _this._degree3 = 0;
-    _this._degree4 = 0;
-    return _this;
-  }
-
-  _createClass(SpeedCircle, [{
-    key: "setOptions",
-    value: function setOptions() {
-      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      var c1 = options.circle1 || {};
-      var c2 = options.circle2 || {};
-      var c3 = options.circle3 || {};
-      var c4 = options.circle4 || {};
-      var text = options.text || {};
-      this.speed1 = c1.speed || 0.5;
-      this.color1 = c1.color || _color.COLOR.red;
-      this.speed2 = c2.speed || -0.5;
-      this.color2 = c2.color || _color.COLOR.yellow;
-      this.speed3 = c3.speed || 0.5;
-      this.color3 = c3.color || _color.COLOR.blue;
-      this.speed4 = c4.speed || -0.5;
-      this.color4 = c4.color || _color.COLOR.grey;
-      this.textColor = text.color || _color.COLOR.green;
-      this.textValue = text.value || '';
+class SpeedCircle extends _base_component__WEBPACK_IMPORTED_MODULE_1__["default"] {
+    constructor(canvas, options = {}) {
+        super(canvas, options, 200, 200);
+        this._font = '25px Arial';
+        this._degree1 = 0;
+        this._degree2 = 0;
+        this._degree3 = 0;
+        this._degree4 = 0;
     }
-  }, {
-    key: "drawObject",
-    value: function drawObject() {
-      this._degree1 = _utility.default.getNextAngleByDegree(this._degree1, this.speed1);
-      this._degree2 = _utility.default.getNextAngleByDegree(this._degree2, this.speed2);
-      this._degree3 = _utility.default.getNextAngleByDegree(this._degree3, this.speed3);
-      this._degree4 = _utility.default.getNextAngleByDegree(this._degree4, this.speed4);
-
-      var a1 = _utility.default.getAngleByDegree(this._degree1);
-
-      var a2 = _utility.default.getAngleByDegree(this._degree2);
-
-      var a3 = _utility.default.getAngleByDegree(this._degree3);
-
-      var a4 = _utility.default.getAngleByDegree(this._degree4);
-
-      this._ctx.translate(100, 100);
-
-      this._ctx.rotate(a1); // Draw bar circle 1.
-
-
-      this._ctx.strokeStyle = this.color1;
-      this._ctx.lineWidth = 8;
-      var space = 0.02;
-      var len = 0.5;
-      var start = 0;
-      var end = len;
-
-      for (var i = 0; i < 6; i++) {
-        this._ctx.beginPath();
-
-        this._ctx.arc(0, 0, 90, Math.PI * start, Math.PI * end);
-
-        this._ctx.stroke();
-
-        this._ctx.closePath();
-
-        start = end + space;
-        len /= 1.7;
-        end = start + len;
-      }
-
-      this._ctx.restore();
-
-      this.save();
-
-      this._ctx.translate(100, 100);
-
-      this._ctx.rotate(a3); // Draw dot circle 3.
-
-
-      for (var _i = 0; _i < 360; _i = _i + 9) {
-        var a = _utility.default.getAngleByDegree(_i);
-
-        var x = 64 * Math.cos(a);
-        var y = 64 * Math.sin(a);
-
-        this._shape.fillCircle(x, y, 3, this.color3);
-      }
-
-      this._ctx.restore();
-
-      this.save();
-
-      this._ctx.translate(100, 100);
-
-      this._ctx.rotate(a2); // Draw bar circle 2.
-
-
-      for (var _i2 = 0; _i2 < 360; _i2 = _i2 + 8) {
-        var _a = _utility.default.getAngleByDegree(_i2);
-
-        var x1 = 70 * Math.cos(_a);
-        var y1 = 70 * Math.sin(_a);
-        var x2 = 83 * Math.cos(_a);
-        var y2 = 83 * Math.sin(_a);
-
-        this._shape.line(x1, y1, x2, y2, 6, this.color2);
-      }
-
-      this._ctx.restore();
-
-      this.save();
-
-      this._ctx.translate(100, 100);
-
-      this._ctx.rotate(a4); // Draw bar circle 4.
-
-
-      this._ctx.lineWidth = 5;
-      this._ctx.strokeStyle = this.color4;
-      len = (2 - 12 * space) / 12;
-      start = 0;
-      end = len;
-
-      for (var _i3 = 0; _i3 < 12; _i3++) {
-        this._ctx.beginPath();
-
-        this._ctx.arc(0, 0, 56, Math.PI * start, Math.PI * end);
-
-        this._ctx.stroke();
-
-        this._ctx.closePath();
-
-        start = end + space;
-        end = start + len;
-      }
-
-      this._ctx.restore();
-
-      this.save(); // Draw the text in the middle.
-
-      this._shape.fillText(this.textValue, 100, 110, this._font, 'center', this.textColor);
+    setOptions(options = {}) {
+        const c1 = options.circle1 || {};
+        const c2 = options.circle2 || {};
+        const c3 = options.circle3 || {};
+        const c4 = options.circle4 || {};
+        const text = options.text || {};
+        this.speed1 = c1.speed !== undefined ? c1.speed : 0.5;
+        this.color1 = c1.color || (this.theme ? this.theme.red : _color__WEBPACK_IMPORTED_MODULE_2__.COLOR.red);
+        this.speed2 = c2.speed !== undefined ? c2.speed : -0.5;
+        this.color2 = c2.color || (this.theme ? this.theme.yellow : _color__WEBPACK_IMPORTED_MODULE_2__.COLOR.yellow);
+        this.speed3 = c3.speed !== undefined ? c3.speed : 0.5;
+        this.color3 = c3.color || (this.theme ? this.theme.blue : _color__WEBPACK_IMPORTED_MODULE_2__.COLOR.blue);
+        this.speed4 = c4.speed !== undefined ? c4.speed : -0.5;
+        this.color4 = c4.color || (this.theme ? this.theme.grey : _color__WEBPACK_IMPORTED_MODULE_2__.COLOR.grey);
+        this.textColor = text.color || (this.theme ? this.theme.green : _color__WEBPACK_IMPORTED_MODULE_2__.COLOR.green);
+        this.textValue = text.value !== undefined ? text.value : '';
     }
-  }]);
+    isAnimating() {
+        return this.speed1 !== 0 || this.speed2 !== 0 || this.speed3 !== 0 || this.speed4 !== 0;
+    }
+    drawObject() {
+        this._degree1 = _utility__WEBPACK_IMPORTED_MODULE_0__["default"].getNextAngleByDegree(this._degree1, this.speed1);
+        this._degree2 = _utility__WEBPACK_IMPORTED_MODULE_0__["default"].getNextAngleByDegree(this._degree2, this.speed2);
+        this._degree3 = _utility__WEBPACK_IMPORTED_MODULE_0__["default"].getNextAngleByDegree(this._degree3, this.speed3);
+        this._degree4 = _utility__WEBPACK_IMPORTED_MODULE_0__["default"].getNextAngleByDegree(this._degree4, this.speed4);
+        const a1 = _utility__WEBPACK_IMPORTED_MODULE_0__["default"].getAngleByDegree(this._degree1);
+        const a2 = _utility__WEBPACK_IMPORTED_MODULE_0__["default"].getAngleByDegree(this._degree2);
+        const a3 = _utility__WEBPACK_IMPORTED_MODULE_0__["default"].getAngleByDegree(this._degree3);
+        const a4 = _utility__WEBPACK_IMPORTED_MODULE_0__["default"].getAngleByDegree(this._degree4);
+        this._ctx.translate(100, 100);
+        this._ctx.rotate(a1);
+        // Draw bar circle 1.
+        this._ctx.strokeStyle = this.color1;
+        this._ctx.lineWidth = 8;
+        const space = 0.02;
+        let len = 0.5;
+        let start = 0;
+        let end = len;
+        for (let i = 0; i < 6; i++) {
+            this._ctx.beginPath();
+            this._ctx.arc(0, 0, 90, Math.PI * start, Math.PI * end);
+            this._ctx.stroke();
+            this._ctx.closePath();
+            start = end + space;
+            len /= 1.7;
+            end = start + len;
+        }
+        this._ctx.restore();
+        this.save();
+        this._ctx.translate(100, 100);
+        this._ctx.rotate(a3);
+        // Draw dot circle 3.
+        for (let i = 0; i < 360; i = i + 9) {
+            const a = _utility__WEBPACK_IMPORTED_MODULE_0__["default"].getAngleByDegree(i);
+            const x = 64 * Math.cos(a);
+            const y = 64 * Math.sin(a);
+            this._shape.fillCircle(x, y, 3, this.color3);
+        }
+        this._ctx.restore();
+        this.save();
+        this._ctx.translate(100, 100);
+        this._ctx.rotate(a2);
+        // Draw bar circle 2.
+        for (let i = 0; i < 360; i = i + 8) {
+            const a = _utility__WEBPACK_IMPORTED_MODULE_0__["default"].getAngleByDegree(i);
+            const x1 = 70 * Math.cos(a);
+            const y1 = 70 * Math.sin(a);
+            const x2 = 83 * Math.cos(a);
+            const y2 = 83 * Math.sin(a);
+            this._shape.line(x1, y1, x2, y2, 6, this.color2);
+        }
+        this._ctx.restore();
+        this.save();
+        this._ctx.translate(100, 100);
+        this._ctx.rotate(a4);
+        // Draw bar circle 4.
+        this._ctx.lineWidth = 5;
+        this._ctx.strokeStyle = this.color4;
+        const len4 = (2 - (12 * space)) / 12;
+        let start4 = 0;
+        let end4 = len4;
+        for (let i = 0; i < 12; i++) {
+            this._ctx.beginPath();
+            this._ctx.arc(0, 0, 56, Math.PI * start4, Math.PI * end4);
+            this._ctx.stroke();
+            this._ctx.closePath();
+            start4 = end4 + space;
+            end4 = start4 + len4;
+        }
+        this._ctx.restore();
+        this.save();
+        // Draw the text in the middle.
+        this._shape.fillText(String(this.textValue), 100, 110, this._font, 'center', this.textColor);
+        if (this.speed1 !== 0 || this.speed2 !== 0 || this.speed3 !== 0 || this.speed4 !== 0) {
+            this._dirty = true;
+        }
+    }
+}
 
-  return SpeedCircle;
-}(_baseComponent.default);
 
-exports.default = SpeedCircle;
-module.exports = exports["default"];
+/***/ },
 
-/***/ }),
-
-/***/ "./src/text-box.js":
+/***/ "./src/text-box.ts"
 /*!*************************!*\
-  !*** ./src/text-box.js ***!
+  !*** ./src/text-box.ts ***!
   \*************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ TextBox)
+/* harmony export */ });
+/* harmony import */ var _utility__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utility */ "./src/utility.ts");
+/* harmony import */ var _base_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./base-component */ "./src/base-component.ts");
+/* harmony import */ var _color__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./color */ "./src/color.ts");
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
 
-var _utility = _interopRequireDefault(__webpack_require__(/*! ./utility */ "./src/utility.js"));
-
-var _baseComponent = _interopRequireDefault(__webpack_require__(/*! ./base-component */ "./src/base-component.js"));
-
-var _color = __webpack_require__(/*! ./color */ "./src/color.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-/**
- * Allow override width
- * default view height 100
- */
-var TextBox =
-/*#__PURE__*/
-function (_BaseComponent) {
-  _inherits(TextBox, _BaseComponent);
-
-  function TextBox(canvas) {
-    var _this;
-
-    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-    _classCallCheck(this, TextBox);
-
-    var viewWidth = options.viewWidth || 200;
-    _this = _possibleConstructorReturn(this, (TextBox.__proto__ || Object.getPrototypeOf(TextBox)).call(this, canvas, options, viewWidth, 100));
-    _this._borderWidth = 8;
-    _this._borderHeight = 30;
-    _this._space = 10;
-    _this._waveY = 0;
-    _this._waveSpeed = 1;
-    _this._isWaveOn = false;
-    return _this;
-  }
-
-  _createClass(TextBox, [{
-    key: "setOptions",
-    value: function setOptions() {
-      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      var text = options.text || {};
-      this._textValue = text.value || '';
-      this.textColor = text.fontColor || _color.COLOR.white;
-      this.textBgColor = text.bgColor || _color.COLOR.blue;
-      this.bgColor = options.bgColor || 'rgba(0, 0, 0, 0.01)';
-      this.borderColor = options.borderColor || _color.COLOR.blue;
-      this.waveColor = options.waveColor || _color.COLOR.blue;
+class TextBox extends _base_component__WEBPACK_IMPORTED_MODULE_1__["default"] {
+    constructor(canvas, options = {}) {
+        const viewWidth = options.viewWidth || 200;
+        super(canvas, options, viewWidth, 100);
+        this._borderWidth = 8;
+        this._borderHeight = 30;
+        this._space = 10;
+        this._waveY = 0;
+        this._waveSpeed = 1;
+        this._isWaveOn = false;
+        this._textValue = '';
+        this.textColor = _color__WEBPACK_IMPORTED_MODULE_2__.COLOR.white;
+        this.textBgColor = _color__WEBPACK_IMPORTED_MODULE_2__.COLOR.blue;
+        this.bgColor = 'rgba(0, 0, 0, 0.01)';
+        this.borderColor = _color__WEBPACK_IMPORTED_MODULE_2__.COLOR.blue;
+        this.waveColor = _color__WEBPACK_IMPORTED_MODULE_2__.COLOR.blue;
     }
-  }, {
-    key: "clear",
-    value: function clear() {
-      this._ctx.fillStyle = this.bgColor;
-
-      this._ctx.fillRect(0, 0, this._width, this._height);
+    setOptions(options = {}) {
+        const text = options.text || {};
+        this._textValue = text.value || '';
+        this.textColor = text.fontColor || (this.theme ? this.theme.white : _color__WEBPACK_IMPORTED_MODULE_2__.COLOR.white);
+        this.textBgColor = text.bgColor || (this.theme ? this.theme.blue : _color__WEBPACK_IMPORTED_MODULE_2__.COLOR.blue);
+        this.bgColor = options.bgColor || 'rgba(0, 0, 0, 0.01)';
+        this.borderColor = options.borderColor || (this.theme ? this.theme.blue : _color__WEBPACK_IMPORTED_MODULE_2__.COLOR.blue);
+        this.waveColor = options.waveColor || (this.theme ? this.theme.blue : _color__WEBPACK_IMPORTED_MODULE_2__.COLOR.blue);
     }
-  }, {
-    key: "drawObject",
-    value: function drawObject() {
-      this._ctx.textAlign = 'center'; // Draw wave line
-
-      if (this._isWaveOn) {
-        var waveWidth = 1;
-
-        if (this._waveY >= this._viewHeight / 2 + waveWidth) {
-          this._waveY = 0;
-          this._isWaveOn = false;
-        } else {
-          this._ctx.fillStyle = this.waveColor;
-
-          this._ctx.beginPath();
-
-          this._ctx.fillRect(0, this._waveY, this._viewWidth + waveWidth, waveWidth);
-
-          this._ctx.closePath();
-
-          this._ctx.beginPath();
-
-          this._ctx.fillRect(0, this._viewHeight - this._waveY - waveWidth, this._viewWidth, waveWidth);
-
-          this._ctx.closePath();
-
-          this._waveY = _utility.default.getNextPos(this._waveY, this._viewHeight / 2 + waveWidth, this._waveSpeed);
+    clear() {
+        this._ctx.fillStyle = this.bgColor;
+        this._ctx.fillRect(this._x, this._y, this._width, this._height);
+    }
+    isAnimating() {
+        return this._isWaveOn;
+    }
+    drawObject() {
+        this._ctx.textAlign = 'center';
+        // Draw wave line
+        if (this._isWaveOn) {
+            const waveWidth = 1;
+            if (this._waveY >= ((this._viewHeight / 2) + waveWidth)) {
+                this._waveY = 0;
+                this._isWaveOn = false;
+            }
+            else {
+                this._ctx.fillStyle = this.waveColor;
+                this._ctx.beginPath();
+                this._ctx.fillRect(0, this._waveY, this._viewWidth + waveWidth, waveWidth);
+                this._ctx.closePath();
+                this._ctx.beginPath();
+                this._ctx.fillRect(0, this._viewHeight - this._waveY - waveWidth, this._viewWidth, waveWidth);
+                this._ctx.closePath();
+                this._waveY = _utility__WEBPACK_IMPORTED_MODULE_0__["default"].getNextPos(this._waveY, this._viewHeight / 2 + waveWidth, this._waveSpeed);
+                this._dirty = true;
+            }
         }
-      } // Draw the border.
-      // Top left
-
-
-      this._ctx.fillStyle = this.borderColor;
-
-      this._ctx.fillRect(0, 0, this._borderHeight, this._borderWidth);
-
-      this._ctx.fillRect(0, 0, this._borderWidth, this._borderHeight); // Bottom left
-
-
-      this._ctx.fillRect(0, this._viewHeight - this._borderHeight, this._borderWidth, this._borderHeight);
-
-      this._ctx.fillRect(0, this._viewHeight - this._borderWidth, this._borderHeight, this._borderWidth); // Top right
-
-
-      this._ctx.fillRect(this._viewWidth - this._borderHeight, 0, this._borderHeight, this._borderWidth);
-
-      this._ctx.fillRect(this._viewWidth - this._borderWidth, 0, this._borderWidth, this._borderHeight); // Bottom right
-
-
-      this._ctx.fillRect(this._viewWidth - this._borderHeight, this._viewHeight - this._borderWidth, this._borderHeight, this._borderWidth);
-
-      this._ctx.fillRect(this._viewWidth - this._borderWidth, this._viewHeight - this._borderHeight, this._borderWidth, this._borderHeight); // Draw background rect.
-
-
-      this._ctx.fillStyle = this.textBgColor;
-
-      this._ctx.fillRect(this._borderWidth + this._space, this._borderWidth + this._space, this._viewWidth - 2 * (this._borderWidth + this._space), this._viewHeight - 2 * (this._borderWidth + this._space)); // Draw text.
-
-
-      this._shape.fillText(this._textValue, this._viewWidth / 2, this._viewHeight - 35, '40px Arial', 'center', this.textColor);
+        // Draw the border.
+        // Top left
+        this._ctx.fillStyle = this.borderColor;
+        this._ctx.fillRect(0, 0, this._borderHeight, this._borderWidth);
+        this._ctx.fillRect(0, 0, this._borderWidth, this._borderHeight);
+        // Bottom left
+        this._ctx.fillRect(0, this._viewHeight - this._borderHeight, this._borderWidth, this._borderHeight);
+        this._ctx.fillRect(0, this._viewHeight - this._borderWidth, this._borderHeight, this._borderWidth);
+        // Top right
+        this._ctx.fillRect(this._viewWidth - this._borderHeight, 0, this._borderHeight, this._borderWidth);
+        this._ctx.fillRect(this._viewWidth - this._borderWidth, 0, this._borderWidth, this._borderHeight);
+        // Bottom right
+        this._ctx.fillRect(this._viewWidth - this._borderHeight, this._viewHeight - this._borderWidth, this._borderHeight, this._borderWidth);
+        this._ctx.fillRect(this._viewWidth - this._borderWidth, this._viewHeight - this._borderHeight, this._borderWidth, this._borderHeight);
+        // Draw background rect.
+        this._ctx.fillStyle = this.textBgColor;
+        this._ctx.fillRect(this._borderWidth + this._space, this._borderWidth + this._space, this._viewWidth - 2 * (this._borderWidth + this._space), this._viewHeight - 2 * (this._borderWidth + this._space));
+        // Draw text.
+        this._shape.fillText(String(this._textValue), this._viewWidth / 2, this._viewHeight - 35, '40px Arial', 'center', this.textColor);
     }
-  }, {
-    key: "value",
-    set: function set(s) {
-      this._textValue = s;
-      this._isWaveOn = true;
+    set value(s) {
+        this._textValue = s;
+        this._isWaveOn = true;
+        this._dirty = true;
     }
-  }]);
+    get value() {
+        return this._textValue;
+    }
+}
 
-  return TextBox;
-}(_baseComponent.default);
 
-exports.default = TextBox;
-module.exports = exports["default"];
+/***/ },
 
-/***/ }),
-
-/***/ "./src/text-meter.js":
+/***/ "./src/text-meter.ts"
 /*!***************************!*\
-  !*** ./src/text-meter.js ***!
+  !*** ./src/text-meter.ts ***!
   \***************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ TextMeter)
+/* harmony export */ });
+/* harmony import */ var _color__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./color */ "./src/color.ts");
+/* harmony import */ var _utility__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utility */ "./src/utility.ts");
+/* harmony import */ var _base_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./base-component */ "./src/base-component.ts");
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
 
-var _color = __webpack_require__(/*! ./color */ "./src/color.js");
-
-var _utility = _interopRequireDefault(__webpack_require__(/*! ./utility */ "./src/utility.js"));
-
-var _baseComponent = _interopRequireDefault(__webpack_require__(/*! ./base-component */ "./src/base-component.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-/**
- * Allow override width
- * default view height 100
- */
-var TextMeter =
-/*#__PURE__*/
-function (_BaseComponent) {
-  _inherits(TextMeter, _BaseComponent);
-
-  function TextMeter(canvas) {
-    var _this;
-
-    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-    _classCallCheck(this, TextMeter);
-
-    var viewWidth = options.viewWidth || 200;
-    _this = _possibleConstructorReturn(this, (TextMeter.__proto__ || Object.getPrototypeOf(TextMeter)).call(this, canvas, options, viewWidth, 100));
-    _this._lineWidth = 5;
-    _this._arrowWidth = 30;
-    _this._pctHeight = 30;
-    _this._actualPctHeight = _this._pctHeight - _this._lineWidth / 2;
-    _this._meterWidth = _this._viewWidth - 2 * _this._arrowWidth;
-    _this._meterHeight = 100 - _this._pctHeight - _this._lineWidth / 2;
-    _this._middleBarHeight = _this._meterHeight / 2 + _this._pctHeight;
-    _this._barX = _this._percentageValue / 100 * _this._meterWidth + _this._arrowWidth;
-    _this._nextBarX = _this._barX;
-    _this._arrow = null;
-    _this._arrowSpeed = 0.6;
-    _this._leftArrowX = -5;
-    _this._rightArrowX = _this._viewWidth + 5;
-    return _this;
-  }
-
-  _createClass(TextMeter, [{
-    key: "setOptions",
-    value: function setOptions() {
-      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      var bar = options.bar || {};
-      var marker = options.marker || {};
-      this.markerBgColor = marker.bgColor || _color.COLOR.black;
-      this.markerFontColor = marker.fontColor || _color.COLOR.white;
-      this.speed = bar.speed || 5;
-      this.fillColor = bar.fillColor || _color.COLOR.red;
-      this.bgColor = bar.bgColor || _color.COLOR.lightWhite;
-      this._lineColor = bar.borderColor || _color.COLOR.lightGreen;
-      this._percentageValue = options.value || 0;
-      this.displayValue = options.displayValue || '';
-      this.arrowColor = options.arrowColor || _color.COLOR.blue;
+class TextMeter extends _base_component__WEBPACK_IMPORTED_MODULE_2__["default"] {
+    constructor(canvas, options = {}) {
+        const viewWidth = options.viewWidth || 200;
+        super(canvas, options, viewWidth, 100);
+        this._lineWidth = 5;
+        this._arrowWidth = 30;
+        this._pctHeight = 30;
+        this._arrow = null;
+        this._arrowSpeed = 0.6;
+        this._leftArrowX = -5;
+        this.markerBgColor = _color__WEBPACK_IMPORTED_MODULE_0__.COLOR.black;
+        this.markerFontColor = _color__WEBPACK_IMPORTED_MODULE_0__.COLOR.white;
+        this.speed = 5;
+        this.fillColor = _color__WEBPACK_IMPORTED_MODULE_0__.COLOR.red;
+        this.bgColor = _color__WEBPACK_IMPORTED_MODULE_0__.COLOR.lightWhite;
+        this._lineColor = _color__WEBPACK_IMPORTED_MODULE_0__.COLOR.lightGreen;
+        this._percentageValue = 0;
+        this.displayValue = '';
+        this.arrowColor = _color__WEBPACK_IMPORTED_MODULE_0__.COLOR.blue;
+        this._actualPctHeight = this._pctHeight - this._lineWidth / 2;
+        this._meterWidth = this._viewWidth - 2 * this._arrowWidth;
+        this._meterHeight = 100 - this._pctHeight - this._lineWidth / 2;
+        this._middleBarHeight = this._meterHeight / 2 + this._pctHeight;
+        this._barX = (this._percentageValue / 100) * this._meterWidth + this._arrowWidth;
+        this._nextBarX = this._barX;
+        this._rightArrowX = this._viewWidth + 5;
     }
-  }, {
-    key: "drawObject",
-    value: function drawObject() {
-      this._ctx.globalCompositeOperation = 'destination-over'; // Draw left half text
-
-      this._ctx.beginPath();
-
-      this._ctx.rect(this._arrowWidth, this._pctHeight, this._barX - this._arrowWidth, this._meterHeight);
-
-      this._ctx.clip();
-
-      this._shape.fillText(this.displayValue, this._viewWidth / 2, 75, '30px Arial', 'center', this.bgColor);
-
-      this._ctx.fillStyle = this.fillColor;
-
-      this._ctx.fillRect(this._arrowWidth, this._pctHeight, this._barX - this._arrowWidth, this._meterHeight);
-
-      this._ctx.restore();
-
-      this.save();
-      this._ctx.globalCompositeOperation = 'destination-over'; // Draw right half text
-
-      this._ctx.beginPath();
-
-      this._ctx.rect(this._barX, this._pctHeight, this._viewWidth - this._barX - this._arrowWidth, this._meterHeight);
-
-      this._ctx.clip();
-
-      this._shape.fillText(this.displayValue, this._viewWidth / 2, 75, '30px Arial', 'center', this.fillColor);
-
-      this._shape.fillRect(this._barX, this._pctHeight, this._viewWidth - this._barX - this._arrowWidth, this._meterHeight, this.bgColor);
-
-      this._ctx.restore();
-
-      this.save();
-      this._ctx.globalCompositeOperation = 'source-over'; // Draw the border.
-
-      this._ctx.lineWidth = this._lineWidth;
-      this._ctx.strokeStyle = this._lineColor;
-
-      this._ctx.beginPath();
-
-      this._ctx.rect(this._arrowWidth, this._pctHeight, this._meterWidth, this._meterHeight);
-
-      this._ctx.stroke();
-
-      this._ctx.closePath(); // Draw percentage value
-
-
-      this._ctx.fillStyle = this.markerBgColor;
-
-      this._ctx.fillRect(this._barX - 25, 0, 50, this._actualPctHeight);
-
-      this._shape.fillText(this._percentageValue + '%', this._barX, 20, '16px Arial', 'center', this.markerFontColor);
-
-      this._ctx.beginPath();
-
-      this._ctx.fillStyle = this.markerBgColor;
-
-      this._ctx.moveTo(this._barX - 8, this._actualPctHeight - this._lineWidth / 2);
-
-      this._ctx.lineTo(this._barX, this._pctHeight + this._lineWidth / 2);
-
-      this._ctx.lineTo(this._barX + 8, this._actualPctHeight - this._lineWidth / 2);
-
-      this._ctx.fill();
-
-      this._ctx.closePath(); // Draw arrow.
-
-
-      if (this._arrow === null) {
-        this.drawLeftArrow();
-        this.drawRightArrow();
-      } else if (this._arrow === 'left') {
-        this.drawLeftArrow();
-      } else {
-        // right
-        this.drawRightArrow();
-      } // Calculate next position barX
-
-
-      this._barX = _utility.default.getNextPos(this._barX, this._nextBarX, this.speed);
+    setOptions(options = {}) {
+        const bar = options.bar || {};
+        const marker = options.marker || {};
+        this.markerBgColor = marker.bgColor || (this.theme ? this.theme.black : _color__WEBPACK_IMPORTED_MODULE_0__.COLOR.black);
+        this.markerFontColor = marker.fontColor || (this.theme ? this.theme.white : _color__WEBPACK_IMPORTED_MODULE_0__.COLOR.white);
+        this.speed = bar.speed || 5;
+        this.fillColor = bar.fillColor || (this.theme ? this.theme.red : _color__WEBPACK_IMPORTED_MODULE_0__.COLOR.red);
+        this.bgColor = bar.bgColor || (this.theme ? this.theme.lightWhite : _color__WEBPACK_IMPORTED_MODULE_0__.COLOR.lightWhite);
+        this._lineColor = bar.borderColor || (this.theme ? this.theme.lightGreen : _color__WEBPACK_IMPORTED_MODULE_0__.COLOR.lightGreen);
+        this._percentageValue = options.value || 0;
+        this.displayValue = options.displayValue || '';
+        this.arrowColor = options.arrowColor || (this.theme ? this.theme.blue : _color__WEBPACK_IMPORTED_MODULE_0__.COLOR.blue);
     }
-  }, {
-    key: "drawLeftArrow",
-    value: function drawLeftArrow() {
-      if (this._leftArrowX <= 0) {
-        this._leftArrowX = this._arrowWidth - 3;
-      } else {
-        this._leftArrowX = _utility.default.getNextPos(this._leftArrowX, 0, -this._arrowSpeed);
-      }
-
-      this._shape.fillTriangle(this._leftArrowX, this._actualPctHeight + 10, this._leftArrowX - 20, this._middleBarHeight, this._leftArrowX, 90, this.arrowColor);
+    isAnimating() {
+        return this._barX !== this._nextBarX || this._arrow !== null;
     }
-  }, {
-    key: "drawRightArrow",
-    value: function drawRightArrow() {
-      if (this._rightArrowX >= this._viewWidth) {
-        this._rightArrowX = this._arrowWidth + 3 + this._meterWidth;
-      } else {
-        this._rightArrowX = _utility.default.getNextPos(this._rightArrowX, this._viewWidth, this._arrowSpeed);
-      }
-
-      this._shape.fillTriangle(this._rightArrowX, this._actualPctHeight + 10, this._rightArrowX + 20, this._middleBarHeight, this._rightArrowX, 90, this.arrowColor);
-    }
-  }, {
-    key: "value",
-    set: function set(value) {
-      if (value >= 0 || value <= 100) {
-        if (value < this._percentageValue) {
-          this.speed = -Math.abs(this.speed);
-          this._arrow = 'left';
-        } else if (value > this._percentageValue) {
-          this.speed = Math.abs(this.speed);
-          this._arrow = 'right';
-        } else {
-          this._arrow = null;
+    drawObject() {
+        this._ctx.globalCompositeOperation = 'destination-over';
+        // Draw left half text
+        this._ctx.save();
+        this._ctx.beginPath();
+        this._ctx.rect(this._arrowWidth, this._pctHeight, this._barX - this._arrowWidth, this._meterHeight);
+        this._ctx.clip();
+        this._shape.fillText(this.displayValue, this._viewWidth / 2, 75, '30px Arial', 'center', this.bgColor);
+        this._ctx.fillStyle = this.fillColor;
+        this._ctx.fillRect(this._arrowWidth, this._pctHeight, this._barX - this._arrowWidth, this._meterHeight);
+        this._ctx.restore();
+        this._ctx.save();
+        this._ctx.globalCompositeOperation = 'destination-over';
+        // Draw right half text
+        this._ctx.beginPath();
+        this._ctx.rect(this._barX, this._pctHeight, this._viewWidth - this._barX - this._arrowWidth, this._meterHeight);
+        this._ctx.clip();
+        this._shape.fillText(this.displayValue, this._viewWidth / 2, 75, '30px Arial', 'center', this.fillColor);
+        this._shape.fillRect(this._barX, this._pctHeight, this._viewWidth - this._barX - this._arrowWidth, this._meterHeight, this.bgColor);
+        this._ctx.restore();
+        this._ctx.save();
+        this._ctx.globalCompositeOperation = 'source-over';
+        // Draw the border.
+        this._ctx.lineWidth = this._lineWidth;
+        this._ctx.strokeStyle = this._lineColor;
+        this._ctx.beginPath();
+        this._ctx.rect(this._arrowWidth, this._pctHeight, this._meterWidth, this._meterHeight);
+        this._ctx.stroke();
+        this._ctx.closePath();
+        // Draw percentage value
+        this._ctx.fillStyle = this.markerBgColor;
+        this._ctx.fillRect(this._barX - 25, 0, 50, this._actualPctHeight);
+        this._shape.fillText(this._percentageValue + '%', this._barX, 20, '16px Arial', 'center', this.markerFontColor);
+        this._ctx.beginPath();
+        this._ctx.fillStyle = this.markerBgColor;
+        this._ctx.moveTo(this._barX - 8, this._actualPctHeight - this._lineWidth / 2);
+        this._ctx.lineTo(this._barX, this._pctHeight + this._lineWidth / 2);
+        this._ctx.lineTo(this._barX + 8, this._actualPctHeight - this._lineWidth / 2);
+        this._ctx.fill();
+        this._ctx.closePath();
+        // Draw arrow.
+        if (this._arrow === null) {
+            this.drawLeftArrow();
+            this.drawRightArrow();
         }
-
-        this._percentageValue = Math.floor(value);
-        this._nextBarX = this._percentageValue / 100 * this._meterWidth + this._arrowWidth;
-      }
+        else if (this._arrow === 'left') {
+            this.drawLeftArrow();
+        }
+        else {
+            // right
+            this.drawRightArrow();
+        }
+        this._ctx.restore();
+        // Calculate next position barX
+        const oldBarX = this._barX;
+        this._barX = _utility__WEBPACK_IMPORTED_MODULE_1__["default"].getNextPos(this._barX, this._nextBarX, this.speed);
+        if (this._barX !== oldBarX || this._arrow !== null) {
+            this._dirty = true;
+        }
     }
-  }]);
+    drawLeftArrow() {
+        if (this._leftArrowX <= 0) {
+            this._leftArrowX = this._arrowWidth - 3;
+        }
+        else {
+            this._leftArrowX = _utility__WEBPACK_IMPORTED_MODULE_1__["default"].getNextPos(this._leftArrowX, 0, -this._arrowSpeed);
+        }
+        this._shape.fillTriangle(this._leftArrowX, this._actualPctHeight + 10, this._leftArrowX - 20, this._middleBarHeight, this._leftArrowX, 90, this.arrowColor);
+    }
+    drawRightArrow() {
+        if (this._rightArrowX >= this._viewWidth) {
+            this._rightArrowX = this._arrowWidth + 3 + this._meterWidth;
+        }
+        else {
+            this._rightArrowX = _utility__WEBPACK_IMPORTED_MODULE_1__["default"].getNextPos(this._rightArrowX, this._viewWidth, this._arrowSpeed);
+        }
+        this._shape.fillTriangle(this._rightArrowX, this._actualPctHeight + 10, this._rightArrowX + 20, this._middleBarHeight, this._rightArrowX, 90, this.arrowColor);
+    }
+    set value(value) {
+        if (value >= 0 && value <= 100) {
+            if (value < this._percentageValue) {
+                this.speed = -Math.abs(this.speed);
+                this._arrow = 'left';
+            }
+            else if (value > this._percentageValue) {
+                this.speed = Math.abs(this.speed);
+                this._arrow = 'right';
+            }
+            else {
+                this._arrow = null;
+            }
+            this._percentageValue = Math.floor(value);
+            this._nextBarX = (this._percentageValue / 100) * this._meterWidth + this._arrowWidth;
+            this._dirty = true;
+        }
+    }
+    get value() {
+        return this._percentageValue;
+    }
+}
 
-  return TextMeter;
-}(_baseComponent.default);
 
-exports.default = TextMeter;
-module.exports = exports["default"];
+/***/ },
 
-/***/ }),
+/***/ "./src/theme.ts"
+/*!**********************!*\
+  !*** ./src/theme.ts ***!
+  \**********************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-/***/ "./src/utility.js":
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   DefaultTheme: () => (/* binding */ DefaultTheme),
+/* harmony export */   ThemeManager: () => (/* binding */ ThemeManager)
+/* harmony export */ });
+const DefaultTheme = {
+    lightGreen: '#00d7af',
+    lightWhite: '#f8f8ff',
+    lightGrey: '#e0e0e0',
+    lightBlack: '#343a42',
+    black: '#000000',
+    white: '#ffffff',
+    red: '#dc3547',
+    blue: '#007bfb',
+    yellow: '#ffc108',
+    cyan: '#17a2b9',
+    grey: '#6c757e',
+    green: '#28a748',
+    orange: '#ffa500',
+    transparent: 'rgba(255, 255, 255, 0)'
+};
+class ThemeManager {
+    constructor() {
+        this._listeners = [];
+        this._theme = DefaultTheme;
+    }
+    static getInstance() {
+        if (!ThemeManager._instance) {
+            ThemeManager._instance = new ThemeManager();
+        }
+        return ThemeManager._instance;
+    }
+    get theme() {
+        return this._theme;
+    }
+    set theme(newTheme) {
+        this._theme = newTheme;
+        this.notify();
+    }
+    subscribe(listener) {
+        this._listeners.push(listener);
+    }
+    unsubscribe(listener) {
+        this._listeners = this._listeners.filter(l => l !== listener);
+    }
+    get listenerCount() {
+        return this._listeners.length;
+    }
+    notify() {
+        this._listeners.forEach(listener => listener());
+    }
+}
+
+
+/***/ },
+
+/***/ "./src/utility.ts"
 /*!************************!*\
-  !*** ./src/utility.js ***!
+  !*** ./src/utility.ts ***!
   \************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var Utility =
-/*#__PURE__*/
-function () {
-  function Utility() {
-    _classCallCheck(this, Utility);
-  }
-
-  _createClass(Utility, null, [{
-    key: "getRandomInt",
-    value: function getRandomInt(min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Utility)
+/* harmony export */ });
+class Utility {
+    constructor() { }
+    static getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
-  }, {
-    key: "getRandomColor",
-    value: function getRandomColor() {
-      return '#' + ((1 << 24) * Math.random() | 0).toString(16);
+    static getRandomColor() {
+        return '#' + ((1 << 24) * Math.random() | 0).toString(16);
     }
-  }, {
-    key: "has",
-    value: function has(object, key) {
-      return object ? hasOwnProperty.call(object, key) : false;
+    static has(object, key) {
+        return object ? Object.prototype.hasOwnProperty.call(object, key) : false;
     }
-  }, {
-    key: "addHour",
-    value: function addHour(h) {
-      var now = new Date();
-      now.setHours(now.getHours() + h);
-      return now;
+    static addHour(h) {
+        const now = new Date();
+        now.setHours(now.getHours() + h);
+        return now;
     }
-  }, {
-    key: "getAngleByDate",
-    value: function getAngleByDate(speed, date) {
-      return speed * Math.PI / 6 * date.getSeconds() + speed * Math.PI / 6000 * date.getMilliseconds();
+    static getAngleByDate(speed, date) {
+        return ((speed * Math.PI) / 6) * date.getSeconds() + ((speed * Math.PI) / 6000) * date.getMilliseconds();
     }
-  }, {
-    key: "getNextAngleByDegree",
-    value: function getNextAngleByDegree(degree, speed) {
-      if (degree >= 360) {
-        return 0;
-      }
+    static getNextAngleByDegree(degree, speed) {
+        if (degree >= 360) {
+            return 0;
+        }
+        return degree + speed;
+    }
+    static getAngleByDegree(degree) {
+        return degree * Math.PI / 180;
+    }
+    static hexToRgba(hex, opacity) {
+        const h = hex.replace('#', '');
+        const r = parseInt(h.substring(0, 2), 16);
+        const g = parseInt(h.substring(2, 4), 16);
+        const b = parseInt(h.substring(4, 6), 16);
+        return 'rgba(' + r + ',' + g + ',' + b + ',' + opacity / 100 + ')';
+    }
+    static hexToRgb(hex) {
+        const h = hex.replace('#', '');
+        const color = [];
+        color[0] = parseInt(h.substring(0, 2), 16);
+        color[1] = parseInt(h.substring(2, 4), 16);
+        color[2] = parseInt(h.substring(4, 6), 16);
+        return color;
+    }
+    static hex(c) {
+        const s = '0123456789abcdef';
+        // Safety check if c is not a number, though TS should prevent it
+        if (isNaN(c)) {
+            return '00';
+        }
+        const i = Math.round(Math.min(Math.max(0, c), 255));
+        return s.charAt((i - i % 16) / 16) + s.charAt(i % 16);
+    }
+    static convertToHex(rgb) {
+        return this.hex(rgb[0]) + this.hex(rgb[1]) + this.hex(rgb[2]);
+    }
+    static generateGradientColor(colorStart, colorEnd, colorCount) {
+        const start = this.hexToRgb(colorStart);
+        const end = this.hexToRgb(colorEnd);
+        const len = colorCount;
+        let alpha = 0.0;
+        const rt = [];
+        for (let i = 0; i < len; i++) {
+            const c = [];
+            alpha += (1.0 / len);
+            c[0] = start[0] * alpha + (1 - alpha) * end[0];
+            c[1] = start[1] * alpha + (1 - alpha) * end[1];
+            c[2] = start[2] * alpha + (1 - alpha) * end[2];
+            rt.push(this.convertToHex(c));
+        }
+        return rt;
+    }
+    static isDefined(o) {
+        return o !== undefined && o !== null;
+    }
+    static leftPadZero(n) {
+        if (n < 10) {
+            return '0' + n;
+        }
+        return n;
+    }
+    static getNextPos(curr, dest, speed) {
+        if (speed > 0 && curr + speed >= dest) {
+            return dest;
+        }
+        if (speed < 0 && curr + speed <= dest) {
+            return dest;
+        }
+        return curr + speed;
+    }
+    static shuffleArray(a) {
+        let j = 0;
+        let temp;
+        for (let i = a.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            temp = a[i];
+            a[i] = a[j];
+            a[j] = temp;
+        }
+        return a;
+    }
+    static prepareCanvas(canvas, ctx) {
+        const dpr = window.devicePixelRatio || 1;
+        const rect = canvas.getBoundingClientRect();
+        if (canvas.width !== rect.width * dpr || canvas.height !== rect.height * dpr) {
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            canvas.style.width = rect.width + 'px';
+            canvas.style.height = rect.height + 'px';
+            ctx.scale(dpr, dpr);
+        }
+    }
+}
 
-      return degree + speed;
-    }
-  }, {
-    key: "getAngleByDegree",
-    value: function getAngleByDegree(degree) {
-      return degree * Math.PI / 180;
-    }
-  }, {
-    key: "hexToRgba",
-    value: function hexToRgba(hex, opacity) {
-      var h = hex.replace('#', '');
-      var r = parseInt(h.substring(0, 2), 16);
-      var g = parseInt(h.substring(2, 4), 16);
-      var b = parseInt(h.substring(4, 6), 16);
-      return 'rgba(' + r + ',' + g + ',' + b + ',' + opacity / 100 + ')';
-    }
-  }, {
-    key: "hexToRgb",
-    value: function hexToRgb(hex) {
-      var h = hex.replace('#', '');
-      var color = [];
-      color[0] = parseInt(h.substring(0, 2), 16);
-      color[1] = parseInt(h.substring(2, 4), 16);
-      color[2] = parseInt(h.substring(4, 6), 16);
-      return color;
-    }
-  }, {
-    key: "hex",
-    value: function hex(c) {
-      var s = '0123456789abcdef';
-      var i = parseInt(c, 10);
 
-      if (i === 0 || isNaN(c)) {
-        return '00';
-      }
+/***/ },
 
-      i = Math.round(Math.min(Math.max(0, i), 255));
-      return s.charAt((i - i % 16) / 16) + s.charAt(i % 16);
-    }
-  }, {
-    key: "convertToHex",
-    value: function convertToHex(rgb) {
-      return this.hex(rgb[0]) + this.hex(rgb[1]) + this.hex(rgb[2]);
-    }
-  }, {
-    key: "generateGradientColor",
-    value: function generateGradientColor(colorStart, colorEnd, colorCount) {
-      var start = this.hexToRgb(colorStart);
-      var end = this.hexToRgb(colorEnd);
-      var len = colorCount;
-      var alpha = 0.0;
-      var rt = [];
-
-      for (var i = 0; i < len; i++) {
-        var c = [];
-        alpha += 1.0 / len;
-        c[0] = start[0] * alpha + (1 - alpha) * end[0];
-        c[1] = start[1] * alpha + (1 - alpha) * end[1];
-        c[2] = start[2] * alpha + (1 - alpha) * end[2];
-        rt.push(this.convertToHex(c));
-      }
-
-      return rt;
-    }
-  }, {
-    key: "isDefined",
-    value: function isDefined(o) {
-      return o !== undefined && o !== null;
-    }
-  }, {
-    key: "leftPadZero",
-    value: function leftPadZero(n) {
-      if (n < 10) {
-        return '0' + n;
-      }
-
-      return n;
-    }
-  }, {
-    key: "getNextPos",
-    value: function getNextPos(curr, dest, speed) {
-      if (speed > 0 && curr + speed >= dest) {
-        return dest;
-      }
-
-      if (speed < 0 && curr + speed <= dest) {
-        return dest;
-      }
-
-      return curr + speed;
-    }
-  }, {
-    key: "shuffleArray",
-    value: function shuffleArray(a) {
-      var j = 0;
-      var temp = 0;
-
-      for (var i = a.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
-      }
-
-      return a;
-    }
-  }]);
-
-  return Utility;
-}();
-
-exports.default = Utility;
-module.exports = exports["default"];
-
-/***/ }),
-
-/***/ "./src/volume-meter.js":
+/***/ "./src/volume-meter.ts"
 /*!*****************************!*\
-  !*** ./src/volume-meter.js ***!
+  !*** ./src/volume-meter.ts ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _baseComponent = _interopRequireDefault(__webpack_require__(/*! ./base-component */ "./src/base-component.js"));
-
-var _color = __webpack_require__(/*! ./color */ "./src/color.js");
-
-var _utility = _interopRequireDefault(__webpack_require__(/*! ./utility */ "./src/utility.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var VolumeMeter =
-/*#__PURE__*/
-function (_BaseComponent) {
-  _inherits(VolumeMeter, _BaseComponent);
-
-  function VolumeMeter(canvas) {
-    var _this;
-
-    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-    _classCallCheck(this, VolumeMeter);
-
-    var viewHeight = options.viewHeight || 200;
-    _this = _possibleConstructorReturn(this, (VolumeMeter.__proto__ || Object.getPrototypeOf(VolumeMeter)).call(this, canvas, options, 100, viewHeight));
-    _this._lineWidth = 3;
-    _this._numberHeight = 20;
-    _this._minMax = 'min';
-    _this._meterWidth = _this._viewWidth / 2;
-    _this._meterHeight = _this._viewHeight - 2 * _this._numberHeight;
-    _this._numberStart = (_this._viewWidth - _this._meterWidth - _this._lineWidth) / 2; // Used only if the value is out of range.
-
-    _this._actualValue = _this._value;
-    _this._barY = _this._viewHeight - (_this._value - _this._minValue) / (_this._maxValue - _this._minValue) * _this._meterHeight - _this._numberHeight;
-    _this._nextBarY = _this._barY;
-    return _this;
-  }
-  /**
-   * @param {*} options
-   */
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ VolumeMeter)
+/* harmony export */ });
+/* harmony import */ var _base_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base-component */ "./src/base-component.ts");
+/* harmony import */ var _color__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./color */ "./src/color.ts");
+/* harmony import */ var _utility__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utility */ "./src/utility.ts");
 
 
-  _createClass(VolumeMeter, [{
-    key: "setOptions",
-    value: function setOptions() {
-      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      var min = options.min || {};
-      var max = options.max || {};
-      var bar = options.bar || {};
-      var marker = options.marker || {};
-      this._minFontColor = min.fontColor || _color.COLOR.white;
-      this._minValue = min.value || 0;
-      this._minBgColor = min.bgColor || _color.COLOR.red;
-      this._maxFontColor = max.fontColor || _color.COLOR.white;
-      this._maxValue = max.value || 100;
-      this._maxBgColor = max.bgColor || _color.COLOR.blue;
-      this._barBorderColor = bar.borderColor || _color.COLOR.black;
-      this.barFillColor = bar.fillColor || _color.COLOR.green;
-      this._isGraident = bar.graident || false;
-      this._speed = bar.speed || 5;
-      this.markerBgColor = marker.bgColor || _color.COLOR.yellow;
-      this._markerFontColor = marker.fontColor || _color.COLOR.white;
-      this._value = options.value || 0;
-    }
-  }, {
-    key: "drawObject",
-    value: function drawObject() {
-      // Handle graident fill color.
-      var barFillStyle = this.barFillColor;
 
-      if (this._isGraident) {
-        var graident = this._ctx.createLinearGradient(this._viewWidth / 2, this._barY, this._viewWidth / 2, this._meterHeight + this._numberHeight);
-
-        graident.addColorStop(0, this.barFillColor);
-        graident.addColorStop(1, 'white');
-        barFillStyle = graident;
-      } // Draw the filled part.
-
-
-      this._shape.fillRect((this._viewWidth - this._meterWidth) / 2, this._barY, this._meterWidth, this._viewHeight - this._barY - this._numberHeight, barFillStyle); // Draw the border.
-
-
-      this._ctx.beginPath();
-
-      this._ctx.lineWidth = this._lineWidth;
-      this._ctx.strokeStyle = this._barBorderColor;
-
-      this._ctx.rect((this._viewWidth - this._meterWidth) / 2, this._numberHeight, this._meterWidth, this._meterHeight);
-
-      this._ctx.stroke();
-
-      this._ctx.closePath(); // Draw value.
-
-
-      this.drawMin();
-      this.drawMax();
-      this.drawMarker(); // Calculate the Y value.
-
-      this._barY = _utility.default.getNextPos(this._barY, this._nextBarY, this._speed);
-    }
-  }, {
-    key: "drawMin",
-    value: function drawMin() {
-      this._shape.fillRect(this._numberStart, this._viewHeight - this._numberHeight - this._lineWidth / 2, this._meterWidth + this._lineWidth, this._numberHeight + this._lineWidth / 2, this._minBgColor);
-
-      this._shape.fillText(this._minValue, this._meterWidth, this._meterHeight + this._numberHeight + 15, '15px Arial', 'center', this._minFontColor);
-    }
-  }, {
-    key: "drawMax",
-    value: function drawMax() {
-      this._shape.fillRect(this._numberStart, 0, this._meterWidth + this._lineWidth, this._numberHeight + this._lineWidth / 2, this._maxBgColor);
-
-      this._shape.fillText(this._maxValue, this._meterWidth, this._numberHeight - 4, '15px Arial', 'center', this._maxFontColor);
-    }
-  }, {
-    key: "drawMarker",
-    value: function drawMarker() {
-      var text = this._minMax === 'max' || this._minMax === 'min' ? this._actualValue : this._value;
-
-      this._shape.fillRect(this._numberStart + this._meterWidth + this._lineWidth, this._barY - 8, this._viewWidth - (this._numberStart + this._meterWidth + this._lineWidth), 16, this.markerBgColor);
-
-      this._shape.fillRect(0, this._barY - this._lineWidth / 2, this._numberStart + this._meterWidth + this._lineWidth, this._lineWidth, this.markerBgColor);
-
-      this._shape.fillText(text, (this._viewWidth - this._meterWidth) / 4 * 3 + this._meterWidth, this._barY + 4, '10px Arial', 'center', this._markerFontColor);
-    }
-  }, {
-    key: "value",
-    set: function set(value) {
-      var n = value;
-      this._actualValue = n;
-
-      if (n >= this._maxValue) {
-        this._minMax = 'max';
-        n = this._maxValue;
-      } else if (n <= this._minValue) {
+class VolumeMeter extends _base_component__WEBPACK_IMPORTED_MODULE_0__["default"] {
+    constructor(canvas, options = {}) {
+        const viewHeight = options.viewHeight || 200;
+        super(canvas, options, 100, viewHeight);
+        this._lineWidth = 3;
+        this._numberHeight = 20;
         this._minMax = 'min';
-        n = this._minValue;
-      } else {
-        this._minMax = 'normal';
-      }
-
-      this._speed = n < this._value ? Math.abs(this._speed) : -Math.abs(this._speed);
-      this._nextBarY = this._viewHeight - (n - this._minValue) / (this._maxValue - this._minValue) * this._meterHeight - this._numberHeight;
-      this._value = n;
+        this._minValue = 0;
+        this._maxValue = 100;
+        this._minFontColor = _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.white;
+        this._minBgColor = _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.red;
+        this._maxFontColor = _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.white;
+        this._maxBgColor = _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.blue;
+        this._barBorderColor = _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.black;
+        this.barFillColor = _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.green;
+        this._isGraident = false;
+        this._speed = 5;
+        this.markerBgColor = _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.yellow;
+        this._markerFontColor = _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.white;
+        this._internalValue = 0;
+        this._meterWidth = this._viewWidth / 2;
+        this._meterHeight = this._viewHeight - 2 * this._numberHeight;
+        this._numberStart = (this._viewWidth - this._meterWidth - this._lineWidth) / 2;
+        // Used only if the value is out of range.
+        this._actualValue = this._internalValue;
+        this._barY = this._viewHeight - (((this._internalValue - this._minValue) /
+            (this._maxValue - this._minValue)) * this._meterHeight) - this._numberHeight;
+        this._nextBarY = this._barY;
     }
-  }]);
+    setOptions(options = {}) {
+        const min = options.min || {};
+        const max = options.max || {};
+        const bar = options.bar || {};
+        const marker = options.marker || {};
+        this._minFontColor = min.fontColor || (this.theme ? this.theme.white : _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.white);
+        this._minValue = min.value !== undefined ? min.value : 0;
+        this._minBgColor = min.bgColor || (this.theme ? this.theme.red : _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.red);
+        this._maxFontColor = max.fontColor || (this.theme ? this.theme.white : _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.white);
+        this._maxValue = max.value !== undefined ? max.value : 100;
+        this._maxBgColor = max.bgColor || (this.theme ? this.theme.blue : _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.blue);
+        this._barBorderColor = bar.borderColor || (this.theme ? this.theme.black : _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.black);
+        this.barFillColor = bar.fillColor || (this.theme ? this.theme.green : _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.green);
+        this._isGraident = bar.graident || false;
+        this._speed = bar.speed || 5;
+        this.markerBgColor = marker.bgColor || (this.theme ? this.theme.yellow : _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.yellow);
+        this._markerFontColor = marker.fontColor || (this.theme ? this.theme.white : _color__WEBPACK_IMPORTED_MODULE_1__.COLOR.white);
+        this._internalValue = options.value || 0;
+    }
+    isAnimating() {
+        return this._barY !== this._nextBarY;
+    }
+    drawObject() {
+        // Handle graident fill color.
+        let barFillStyle = this.barFillColor;
+        if (this._isGraident) {
+            const gradient = this._ctx.createLinearGradient(this._viewWidth / 2, this._barY, this._viewWidth / 2, this._meterHeight + this._numberHeight);
+            gradient.addColorStop(0, this.barFillColor);
+            gradient.addColorStop(1, 'white');
+            barFillStyle = gradient;
+        }
+        // Draw the filled part.
+        this._shape.fillRect((this._viewWidth - this._meterWidth) / 2, this._barY, this._meterWidth, this._viewHeight - this._barY - this._numberHeight, barFillStyle);
+        // Draw the border.
+        this._ctx.beginPath();
+        this._ctx.lineWidth = this._lineWidth;
+        this._ctx.strokeStyle = this._barBorderColor;
+        this._ctx.rect((this._viewWidth - this._meterWidth) / 2, this._numberHeight, this._meterWidth, this._meterHeight);
+        this._ctx.stroke();
+        this._ctx.closePath();
+        // Draw value.
+        this.drawMin();
+        this.drawMax();
+        this.drawMarker();
+        // Calculate the Y value.
+        const oldBarY = this._barY;
+        this._barY = _utility__WEBPACK_IMPORTED_MODULE_2__["default"].getNextPos(this._barY, this._nextBarY, this._speed);
+        if (this._barY !== oldBarY) {
+            this._dirty = true;
+        }
+    }
+    drawMin() {
+        this._shape.fillRect(this._numberStart, this._viewHeight - this._numberHeight - this._lineWidth / 2, this._meterWidth + this._lineWidth, this._numberHeight + this._lineWidth / 2, this._minBgColor);
+        this._shape.fillText(String(this._minValue), this._meterWidth, this._meterHeight + this._numberHeight + 15, '15px Arial', 'center', this._minFontColor);
+    }
+    drawMax() {
+        this._shape.fillRect(this._numberStart, 0, this._meterWidth + this._lineWidth, this._numberHeight + this._lineWidth / 2, this._maxBgColor);
+        this._shape.fillText(String(this._maxValue), this._meterWidth, this._numberHeight - 4, '15px Arial', 'center', this._maxFontColor);
+    }
+    drawMarker() {
+        const text = (this._minMax === 'max' || this._minMax === 'min') ? this._actualValue : this._internalValue;
+        this._shape.fillRect(this._numberStart + this._meterWidth + this._lineWidth, this._barY - 8, (this._viewWidth - (this._numberStart + this._meterWidth + this._lineWidth)), 16, this.markerBgColor);
+        this._shape.fillRect(0, this._barY - this._lineWidth / 2, this._numberStart + this._meterWidth + this._lineWidth, this._lineWidth, this.markerBgColor);
+        this._shape.fillText(String(text), (this._viewWidth - this._meterWidth) / 4 * 3 + this._meterWidth, this._barY + 4, '10px Arial', 'center', this._markerFontColor);
+    }
+    set value(value) {
+        let n = value;
+        this._actualValue = n;
+        if (n >= this._maxValue) {
+            this._minMax = 'max';
+            n = this._maxValue;
+        }
+        else if (n <= this._minValue) {
+            this._minMax = 'min';
+            n = this._minValue;
+        }
+        else {
+            this._minMax = 'normal';
+        }
+        this._speed = n < this._internalValue ? Math.abs(this._speed) : -Math.abs(this._speed);
+        this._nextBarY = this._viewHeight - (((n - this._minValue) /
+            (this._maxValue - this._minValue)) * this._meterHeight) - this._numberHeight;
+        this._internalValue = n;
+        this._dirty = true;
+    }
+    get value() {
+        return this._actualValue;
+    }
+}
 
-  return VolumeMeter;
-}(_baseComponent.default);
 
-exports.default = VolumeMeter;
-module.exports = exports["default"];
+/***/ }
 
-/***/ })
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Check if module exists (development only)
+/******/ 		if (__webpack_modules__[moduleId] === undefined) {
+/******/ 			var e = new Error("Cannot find module '" + moduleId + "'");
+/******/ 			e.code = 'MODULE_NOT_FOUND';
+/******/ 			throw e;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
+(() => {
+/*!**********************!*\
+  !*** ./src/index.ts ***!
+  \**********************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   BarMeter: () => (/* reexport safe */ _bar_meter__WEBPACK_IMPORTED_MODULE_2__["default"]),
+/* harmony export */   BaseComponent: () => (/* reexport safe */ _base_component__WEBPACK_IMPORTED_MODULE_14__["default"]),
+/* harmony export */   DigitalClock: () => (/* reexport safe */ _digital_clock__WEBPACK_IMPORTED_MODULE_3__["default"]),
+/* harmony export */   Heartbeat: () => (/* reexport safe */ _heartbeat__WEBPACK_IMPORTED_MODULE_6__["default"]),
+/* harmony export */   HexGrid: () => (/* reexport safe */ _hex_grid__WEBPACK_IMPORTED_MODULE_12__["default"]),
+/* harmony export */   MessageQueue: () => (/* reexport safe */ _message_queue__WEBPACK_IMPORTED_MODULE_7__["default"]),
+/* harmony export */   NetworkGraph: () => (/* reexport safe */ _network_graph__WEBPACK_IMPORTED_MODULE_11__["default"]),
+/* harmony export */   RoundFan: () => (/* reexport safe */ _round_fan__WEBPACK_IMPORTED_MODULE_4__["default"]),
+/* harmony export */   ScoreBoard: () => (/* reexport safe */ _score_board__WEBPACK_IMPORTED_MODULE_13__["default"]),
+/* harmony export */   Settings: () => (/* reexport safe */ _settings__WEBPACK_IMPORTED_MODULE_1__["default"]),
+/* harmony export */   SpeedCircle: () => (/* reexport safe */ _speed_circle__WEBPACK_IMPORTED_MODULE_9__["default"]),
+/* harmony export */   TextBox: () => (/* reexport safe */ _text_box__WEBPACK_IMPORTED_MODULE_10__["default"]),
+/* harmony export */   TextMeter: () => (/* reexport safe */ _text_meter__WEBPACK_IMPORTED_MODULE_8__["default"]),
+/* harmony export */   ThemeManager: () => (/* reexport safe */ _theme__WEBPACK_IMPORTED_MODULE_15__.ThemeManager),
+/* harmony export */   VolumeMeter: () => (/* reexport safe */ _volume_meter__WEBPACK_IMPORTED_MODULE_5__["default"]),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _animation_timer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./animation-timer */ "./src/animation-timer.ts");
+/* harmony import */ var _settings__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./settings */ "./src/settings.ts");
+/* harmony import */ var _bar_meter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bar-meter */ "./src/bar-meter.ts");
+/* harmony import */ var _digital_clock__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./digital-clock */ "./src/digital-clock.ts");
+/* harmony import */ var _round_fan__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./round-fan */ "./src/round-fan.ts");
+/* harmony import */ var _volume_meter__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./volume-meter */ "./src/volume-meter.ts");
+/* harmony import */ var _heartbeat__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./heartbeat */ "./src/heartbeat.ts");
+/* harmony import */ var _message_queue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./message-queue */ "./src/message-queue.ts");
+/* harmony import */ var _text_meter__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./text-meter */ "./src/text-meter.ts");
+/* harmony import */ var _speed_circle__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./speed-circle */ "./src/speed-circle.ts");
+/* harmony import */ var _text_box__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./text-box */ "./src/text-box.ts");
+/* harmony import */ var _network_graph__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./network-graph */ "./src/network-graph.ts");
+/* harmony import */ var _hex_grid__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./hex-grid */ "./src/hex-grid.ts");
+/* harmony import */ var _score_board__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./score-board */ "./src/score-board.ts");
+/* harmony import */ var _base_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./base-component */ "./src/base-component.ts");
+/* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./theme */ "./src/theme.ts");
 
-/******/ });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+    Settings: _settings__WEBPACK_IMPORTED_MODULE_1__["default"],
+    BaseComponent: _base_component__WEBPACK_IMPORTED_MODULE_14__["default"],
+    ThemeManager: _theme__WEBPACK_IMPORTED_MODULE_15__.ThemeManager,
+    BarMeter: _bar_meter__WEBPACK_IMPORTED_MODULE_2__["default"],
+    DigitalClock: _digital_clock__WEBPACK_IMPORTED_MODULE_3__["default"],
+    VolumeMeter: _volume_meter__WEBPACK_IMPORTED_MODULE_5__["default"],
+    Heartbeat: _heartbeat__WEBPACK_IMPORTED_MODULE_6__["default"],
+    MessageQueue: _message_queue__WEBPACK_IMPORTED_MODULE_7__["default"],
+    SpeedCircle: _speed_circle__WEBPACK_IMPORTED_MODULE_9__["default"],
+    TextMeter: _text_meter__WEBPACK_IMPORTED_MODULE_8__["default"],
+    RoundFan: _round_fan__WEBPACK_IMPORTED_MODULE_4__["default"],
+    TextBox: _text_box__WEBPACK_IMPORTED_MODULE_10__["default"],
+    NetworkGraph: _network_graph__WEBPACK_IMPORTED_MODULE_11__["default"],
+    HexGrid: _hex_grid__WEBPACK_IMPORTED_MODULE_12__["default"],
+    ScoreBoard: _score_board__WEBPACK_IMPORTED_MODULE_13__["default"]
+});
+// Fire up window.requestAnimationFrame()
+_animation_timer__WEBPACK_IMPORTED_MODULE_0__["default"].render();
+
+})();
+
+__webpack_exports__ = __webpack_exports__["default"];
+/******/ 	return __webpack_exports__;
+/******/ })()
+;
 });
 //# sourceMappingURL=zeu.js.map

@@ -56,7 +56,7 @@ body {
   <canvas id="system-status" width="200" height="120" style="position: absolute; top: 460px; left: 92px; z-index: 3;"></canvas>
 
 
-  <canvas id="network-graph" width="860" height="600" style="position: absolute; top: 0px; left: 0px; z-index: 2;"></canvas>
+  <canvas id="network-graph" width="860" height="600" style="position: absolute; top: 0px; left: 0px; z-index: 10; pointer-events: none;"></canvas>
 
   
   <div class="sys-title" style="top: 224px; left: 10px;">Load Balancers</div>
@@ -70,7 +70,7 @@ body {
   <div class="sys-title" style="top: 560px; left: 546px;">Queues</div>
   <canvas id="message-queue-1" class="message-queue" width="30" height="120" style="position: absolute; top: 350px; left: 510px; z-index: 3;"></canvas>
   <canvas id="message-queue-2" class="message-queue" width="30" height="120" style="position: absolute; top: 380px; left: 510px; z-index: 3;"></canvas>
-  <canvas id="message-queue-3" class="message-queue" width="30" height="120" style="position: absolute; top: 410px; left: 510px; z-index: 23;"></canvas>
+  <canvas id="message-queue-3" class="message-queue" width="30" height="120" style="position: absolute; top: 410px; left: 510px; z-index: 3;"></canvas>
   <canvas id="message-queue-4" class="message-queue" width="30" height="120" style="position: absolute; top: 440px; left: 510px; z-index: 3;"></canvas>
   
   <div class="sys-title" style="top: 36px; left: 630px;">Cache</div>
@@ -709,11 +709,11 @@ body {
     var a = getRandomInt(0, 1);
     if (a == 0) {
       networkGraph.alertOn({
-        text: 'WARNING', 
-        interval: 2000,
-        bgColor: HEX_BG,
-        fontColor: orange,
-        lineColor: orange
+        text: 'SYSTEM CRITICAL', 
+        interval: 1000,
+        bgColor: 'rgba(220, 53, 71, 0.2)',
+        fontColor: '#ff5722',
+        lineColor: '#ff5722'
       });
     }
   }, 10000);

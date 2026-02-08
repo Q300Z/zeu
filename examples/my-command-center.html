@@ -78,6 +78,10 @@ h1 {
             <h1>MY COMMAND CENTER</h1>
             <div><a href="https://github.com/shzlw/zeu" style="font-size: 18px;">by Zeu.js</a></div>
             <div style="font-size: 22px; font-weight: bold;">US-EAST-01</div>
+            <div class="mt-3">
+              <button class="btn btn-sm btn-outline-light" onclick="setTheme('light')">Light Theme</button>
+              <button class="btn btn-sm btn-outline-light" onclick="setTheme('dark')">Dark Theme</button>
+            </div>
           </div>
           <div class="col-lg-4">
             <h2>TIME</h2>
@@ -583,6 +587,48 @@ h1 {
           textMeters[i].markerBgColor = blue;
         }
      }
+  }
+
+  function setTheme(mode) {
+    if (mode === 'light') {
+      zeu.ThemeManager.getInstance().theme = {
+        lightGreen: '#00d7af',
+        lightWhite: '#f8f8ff',
+        lightGrey: '#e0e0e0',
+        lightBlack: '#343a42',
+        black: '#ffffff', // Invert for light mode demo
+        white: '#000000',
+        red: '#dc3547',
+        blue: '#007bfb',
+        yellow: '#ffc108',
+        cyan: '#17a2b9',
+        grey: '#6c757e',
+        green: '#28a748',
+        orange: '#ffa500',
+        transparent: 'rgba(255, 255, 255, 0)'
+      };
+      document.body.style.backgroundImage = 'linear-gradient(to left top, #f0f0f0, #e0e0e0)';
+      document.body.style.color = '#333';
+    } else {
+      zeu.ThemeManager.getInstance().theme = {
+        lightGreen: '#00d7af',
+        lightWhite: '#F8F8FF',
+        lightGrey: '#E0E0E0',
+        lightBlack: '#343a42',
+        black: '#000000',
+        white: '#ffffff',
+        red: '#dc3547',
+        blue: '#007bfb',
+        yellow: '#ffc108',
+        cyan: '#17a2b9',
+        grey: '#6c757e',
+        green: '#28a748',
+        orange: '#ffa500',
+        transparent: 'rgba(255, 255, 255, 0)'
+      };
+      document.body.style.backgroundImage = 'linear-gradient(to left top, #0385b8, #57dba2)';
+      document.body.style.color = 'white';
+    }
   }
 
   function getRandomColor() {
